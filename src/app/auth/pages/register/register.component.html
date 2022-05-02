@@ -1,4 +1,44 @@
-<form class="login100-form" 
+<div class="text-center w-75 m-auto">
+    <h4 class="text-dark-50 text-center mt-0 fw-bold">Registrarse</h4>
+    <p class="text-muted mb-4">¿No tiene una cuenta? Cree su cuenta, tarda menos de un minuto.</p>
+</div>
+
+<form [formGroup]="FromRegister"
+      (ngSubmit)="register()">
+
+    <div class="mb-3">
+        <label for="name" class="form-label">Nombres y Apellidos</label>
+        <input class="form-control" type="text" id="name" formControlName="name" placeholder="Ingrese sus nombres y apellidos" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="email" class="form-label">Dirección de correo electrónico</label>
+        <input class="form-control" type="email" id="email" required placeholder="Ingrese su correo electrónico">
+    </div>
+
+    <div class="mb-3">
+        <label for="username" class="form-label">Nombre de usuario</label>
+        <input class="form-control" type="text" id="username" formControlName="username" required placeholder="Ingrese el nombre de usuario">
+    </div>
+
+    <div class="mb-3">
+        <label for="password" class="form-label">Contraseña</label>
+        <div class="input-group input-group-merge">
+            <input type="password" id="password" class="form-control" formControlName="password" placeholder="Ingrese su contraseña">
+        </div>
+    </div>
+    <div class="mb-3 text-center">
+        <button class="btn btn-primary" [disabled]="FromRegister.invalid" type="submit"> Registrarse </button>
+    </div>
+
+</form>
+
+<div class="row mt-3">
+    <div class="col-12 text-center">
+        <p class="text-muted">¿Ya tiene una cuenta? <a routerLink="/auth/login" class="text-muted ms-1"><b>Iniciar Sesión</b></a></p>
+    </div>
+</div>
+<!-- <form class="login100-form" 
     autocomplete="off"
     [formGroup]="FromRegister"
     (ngSubmit)="register()">
@@ -55,4 +95,4 @@
             Acceder ahora
         </a>
     </div>
-</form>
+</form> -->
