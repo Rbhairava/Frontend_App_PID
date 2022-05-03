@@ -4,12 +4,27 @@ import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { LoginComponent } from "./components/login/login.component";
 import { AdminGuard } from "./guards/admin.guard";
 import { RegisterComponent } from "./components/register/register.component";
+import { OwnerComponent } from "./components/owner/owner.component";
+import { DepartmentComponent } from "./components/department/department.component";
+import { MascotComponent } from "./components/mascot/mascot.component";
+import { VisitComponent } from "./components/visit/visit.component";
+import { CreateOwnerComponent } from "./components/owner/create-owner/create-owner.component";
+import { CreateDepartmentComponent } from "./components/department/create-department/create-department.component";
+import { CreateMascotComponent } from "./components/mascot/create-mascot/create-mascot.component";
+import { CreateVisitComponent } from "./components/visit/create-visit/create-visit.component";
 
 const appRoute: Routes = [
     {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
     {path: 'dashboard', component: DashboardComponent, canActivate: [AdminGuard]},
-    {path: 'panel-admistrativo', children: [
-        {path: 'dashboard', component: DashboardComponent, canActivate: [AdminGuard]}
+    {path: 'dashboard', children: [
+        {path: 'owner', component: OwnerComponent, canActivate: [AdminGuard]},
+        {path: 'owner/create', component: CreateOwnerComponent, canActivate: [AdminGuard]},
+        {path: 'department', component: DepartmentComponent, canActivate: [AdminGuard]},
+        {path: 'department/create', component: CreateDepartmentComponent, canActivate: [AdminGuard]},
+        {path: 'mascot', component: MascotComponent, canActivate: [AdminGuard]},
+        {path: 'mascot/create', component: CreateMascotComponent, canActivate: [AdminGuard]},
+        {path: 'visit', component: VisitComponent, canActivate: [AdminGuard]},
+        {path: 'visit/create', component: CreateVisitComponent, canActivate: [AdminGuard]},
     ]},
 
     {path: 'login', component: LoginComponent},

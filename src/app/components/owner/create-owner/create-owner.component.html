@@ -1,0 +1,71 @@
+<app-sidebar></app-sidebar>
+
+<div class="content-page">
+    <div class="content">
+        
+        <app-topbar></app-topbar>
+
+        <!-- Start Content-->
+        <div class="container-fluid">  
+            <!-- start page title -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box">
+                        <div class="page-title-right">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Hyper</a></li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
+                                <li class="breadcrumb-item active">Propietario</li>
+                            </ol>
+                        </div>
+                        <h4 class="page-title">Crear Propietario</h4>
+                    </div>
+                </div>
+            </div>     
+            <!-- end page title -->           
+            <!-- start page title -->
+            <div class="row">
+                <div class="col-12">
+                    <form #ownerForm="ngForm" (ngSubmit)="owner(ownerForm)">
+                        <div class="mb-3">
+                            <label class="form-label" for="validationCustom01">Nombre</label>
+                            <input type="text" class="form-control" id="validationCustom01" placeholder="Ingrese su nombre" required>
+                            <div class="valid-feedback">
+                                ¡Se ve bien!
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="validationCustom02">DNI</label>
+                            <input type="text" class="form-control" id="validationCustom02" placeholder="Ingrese su DNI" required>
+                            <div class="valid-feedback">
+                                ¡Se ve bien!
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="example-number" class="form-label">Edad</label>
+                            <input class="form-control" id="example-number" type="number" name="number">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="validationCustom02">Correo electronico</label>
+                            <input type="text" class="form-control" id="validationCustom02" placeholder="Ingrese su correo electrónico" required>
+                            <div class="valid-feedback">
+                                ¡Se ve bien!
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="example-date" class="form-label">Fecha inicio</label>
+                            <input class="form-control" id="example-date" type="date" name="date">
+                        </div>                      
+                        <div class="mb-3">
+                            <label for="example-date" class="form-label">Fecha fin</label>
+                            <input class="form-control" id="example-date" type="date" name="date">
+                        </div>                        
+                        <button class="btn btn-primary mb-4" type="submit">Registrar Propietario</button>
+                    </form>
+                </div>
+            </div>     
+            <!-- end page title -->             
+        </div> <!-- container -->
+    </div> <!-- content -->
+    <app-footer></app-footer>
+</div>

@@ -11,6 +11,16 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { interceptorProvider } from './services/interceptor.service';
+import { OwnerComponent } from './components/owner/owner.component';
+import { DepartmentComponent } from './components/department/department.component';
+import { MascotComponent } from './components/mascot/mascot.component';
+import { VisitComponent } from './components/visit/visit.component';
+import { TopbarComponent } from './components/topbar/topbar.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { CreateOwnerComponent } from './components/owner/create-owner/create-owner.component';
+import { CreateDepartmentComponent } from './components/department/create-department/create-department.component';
+import { CreateVisitComponent } from './components/visit/create-visit/create-visit.component';
+import { CreateMascotComponent } from './components/mascot/create-mascot/create-mascot.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +28,17 @@ import { interceptorProvider } from './services/interceptor.service';
     DashboardComponent,
     SidebarComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    OwnerComponent,
+    DepartmentComponent,
+    MascotComponent,
+    VisitComponent,
+    TopbarComponent,
+    FooterComponent,
+    CreateOwnerComponent,
+    CreateDepartmentComponent,
+    CreateVisitComponent,
+    CreateMascotComponent
   ],
   imports: [
     BrowserModule,

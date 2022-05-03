@@ -26,65 +26,35 @@
         <ul class="side-nav">
             <li class="side-nav-title side-nav-item">Navigation</li>            
             <li class="side-nav-item">
-                <a data-bs-toggle="collapse" href="#sidebarDashboards" aria-expanded="false" aria-controls="sidebarDashboards" class="side-nav-link">
+                <a data-bs-toggle="collapse" routerLink="/dashboard" aria-expanded="false" aria-controls="sidebarDashboards" class="side-nav-link">
                     <i class="uil-home-alt"></i>
                     <span> Dashboard </span>
                 </a>
             </li>
             <li class="side-nav-item">
-                <a href="apps-users.html" class="side-nav-link">
-                    <i class="uil-users-alt"></i>
-                    <span> Usuarios </span>
+                <a routerLink="/dashboard/owner/create" class="side-nav-link">
+                    <i class="uil-user"></i>
+                    <span> Propietario </span>
                 </a>
             </li>
             <li class="side-nav-item">
-                <a href="apps-categories.html" class="side-nav-link">
+                <a routerLink="/dashboard/department" class="side-nav-link">
                     <i class="uil-list-ul"></i>
-                    <span> Categorías </span>
+                    <span> Departamento </span>
                 </a>
             </li>
             <li class="side-nav-item">
-                <a href="apps-subcategories.html" class="side-nav-link">
-                    <i class="uil-table"></i>
-                    <span> SubCategorías </span>
+                <a routerLink="/dashboard/mascot" class="side-nav-link">
+                    <i class="uil-github-alt"></i>
+                    <span> Mascotas </span>
                 </a>
             </li>
             <li class="side-nav-item">
-                <a href="apps-stores.html" class="side-nav-link">
-                    <i class="uil-store"></i>
-                    <span> Tiendas </span>
+                <a routerLink="/dashboard/visit" class="side-nav-link">
+                    <i class="uil-users-alt"></i>
+                    <span> Visita </span>
                 </a>
-            </li>
-            <li class="side-nav-item">
-                <a href="apps-products.html" class="side-nav-link">
-                    <i class="uil-cart"></i>
-                    <span> Productos </span>
-                </a>
-            </li>
-            <li class="side-nav-item">
-                <a href="apps-orders.html" class="side-nav-link">
-                    <i class="uil-shopping-basket"></i>
-                    <span> Órdenes </span>
-                </a>
-            </li>
-            <li class="side-nav-item">
-                <a href="apps-sales.html" class="side-nav-link">
-                    <i class="uil-shopping-trolley"></i>
-                    <span> Ventas </span>
-                </a>
-            </li>
-            <li class="side-nav-item">
-                <a href="apps-disputes.html" class="side-nav-link">
-                    <i class="uil-comments-alt"></i>
-                    <span> Disputas </span>
-                </a>
-            </li>
-            <li class="side-nav-item">
-                <a href="apps-messages.html" class="side-nav-link">
-                    <i class="uil-comment-alt-lines"></i>
-                    <span> Mensajes </span>
-                </a>
-            </li>
+            </li>            
             <li class="side-nav-item">
                 <a style="cursor: pointer;" class="side-nav-link" (click)= "onLogOut()">
                     <i class="uil-download-alt"></i>
