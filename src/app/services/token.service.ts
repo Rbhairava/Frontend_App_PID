@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+
+declare var iziToast;
 
 const TOKEN_KEY = 'AuthToken';
-const USERNAME_KEY = 'AuthUsername';
-const AUTHORITIES_KEY = 'AuthAuthorities';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +12,11 @@ export class TokenService {
 
   roles: Array<string> = [];
 
-  constructor() { }
+  constructor(
+    private _router: Router
+  ) { }
 
-  public setToken(token: string):void {
+  public setToken(token: string): void {
     window.localStorage.removeItem(TOKEN_KEY);
     window.localStorage.setItem(TOKEN_KEY, token);
   }
@@ -22,32 +25,52 @@ export class TokenService {
     return localStorage.getItem(TOKEN_KEY)!;
   }
 
-  public setUsername(username: string): void {
-    window.localStorage.removeItem(USERNAME_KEY);
-    window.localStorage.setItem(USERNAME_KEY, username);
-  }
+  public isLogged(): boolean {
 
-  public getUsername(): string {
-    return localStorage.getItem(USERNAME_KEY)!;
-  }
-
-  public setAuthorities(authorities: string[]): void {
-    window.localStorage.removeItem(AUTHORITIES_KEY);
-    window.localStorage.setItem(AUTHORITIES_KEY, JSON.stringify(authorities));
-  }
-
-  public getAuthorities(): string[] {
-    this.roles = [];
-    if (sessionStorage.getItem(AUTHORITIES_KEY)) {
-      JSON.parse(sessionStorage.getItem(AUTHORITIES_KEY)!).forEach((authority: any) => {
-        this.roles.push(authority.authority);
-      });
+    if (this.getToken()) {
+      return true;
     }
-    return this.roles;
+    return false;
+
   }
 
-  public logOut(): void {
+  public getUserName(): string {
+    if (!this.isLogged()) {
+      return null!;
+    }
+    const token = this.getToken();
+    const payload = token.split('.')[1];
+    const payloadDecoded = atob(payload);
+    const values = JSON.parse(payloadDecoded);
+    const username = values.sub;
+    return username;
+  }
+
+  public isAdmin(): boolean {
+    if (!this.isLogged()) {
+      return false;
+    }
+    const token = this.getToken();
+    const payload = token.split('.')[1];
+    const payloadDecoded = atob(payload);
+    const values = JSON.parse(payloadDecoded);
+    const roles = values.roles;
+    
+    if (roles.indexOf('ROLE_ADMIN') < 0) {
+      iziToast.show({
+        title: 'Error',
+        position: 'topRight',
+        color: 'red',
+        timeout: 1000,
+        message: '¡Solo los usuarios administradores pueden acceder!'
+      });
+      return false;
+    }     
+    return true;
+  }
+
+  public logout(): void {
     window.localStorage.clear();
+    this._router.navigate(['/login']);
   }
-
 }
