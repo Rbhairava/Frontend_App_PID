@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Mascot } from 'src/app/models/mascot';
+import { MascotService } from 'src/app/services/mascot.service';
 
 @Component({
   selector: 'app-mascot',
@@ -6,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MascotComponent implements OnInit {
 
-  constructor() { }
+  listaMarca:Mascot[]=[];
+
+  constructor(
+    private _mascotService: MascotService
+  ) { }
 
   ngOnInit(): void {
   }

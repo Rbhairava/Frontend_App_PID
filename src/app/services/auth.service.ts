@@ -16,10 +16,10 @@ export class AuthService {
   constructor(private httpClient: HttpClient) { }
 
   public new(newUser: NewUser): Observable<any> {
-    return this.httpClient.post<any>(this.authURL + 'register', newUser);
+    return this.httpClient.post<any>(this.authURL + 'auth/register', newUser);
   }
 
   public login_admin(loginUser: LoginUser): Observable<JwtDTO> {
-    return this.httpClient.post<JwtDTO>(this.authURL + 'login', loginUser);
+    return this.httpClient.post<JwtDTO>(this.authURL + 'auth/login', loginUser);
   }
 }

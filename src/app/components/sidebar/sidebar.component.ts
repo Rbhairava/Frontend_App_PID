@@ -4,8 +4,7 @@ import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-sidebar',
-  templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.css']
+  templateUrl: './sidebar.component.html'
 })
 export class SidebarComponent implements OnInit {
 
