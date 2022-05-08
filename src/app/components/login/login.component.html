@@ -19,16 +19,23 @@
                         <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
                             <div class="mb-3">
                                 <label for="emailaddress" class="form-label">Nombre de usuario</label>
-                                <input class="form-control" type="text" name="userName" [(ngModel)]="userName" required="" placeholder="Ingrese su nombre de usuario">
+                                <input class="form-control" 
+                                       type="text" 
+                                       name="userName" 
+                                       [(ngModel)]="userName" 
+                                       required="" 
+                                       placeholder="Ingrese su nombre de usuario">
                             </div>
 
                             <div class="mb-3">
                                 <label for="password" class="form-label">Contraseña</label>
                                 <div class="input-group input-group-merge">
-                                    <input type="password" name="password" [(ngModel)]="password" class="form-control" placeholder="Tu contraseña" required="">
-                                    <div class="input-group-text" data-password="false">
-                                        <span class="password-eye"></span>
-                                    </div>
+                                    <input type="password" 
+                                           name="password" 
+                                           [(ngModel)]="password" 
+                                           class="form-control" 
+                                           placeholder="Tu contraseña" 
+                                           required="">
                                 </div>
                             </div>
                             <div class="mb-3 mb-0 text-center">

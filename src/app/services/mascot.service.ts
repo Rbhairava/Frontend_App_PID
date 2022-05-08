@@ -9,17 +9,17 @@ import { Mascot } from '../models/mascot';
 })
 export class MascotService {
 
-  authURL = environment.authURL;
+  baseURL = environment.baseURL;
 
   constructor(
     private _httpClient: HttpClient
   ) { }
 
-  listar():Observable<Mascot[]>{
-    return this._httpClient.get<Mascot[]>(this.authURL+"/list");
+  listMascot():Observable<Mascot[]>{
+    return this._httpClient.get<Mascot[]>(this.baseURL+"url/mascota/list");
   }
 
   addMascot(reg:Mascot): Observable<any> {
-    return this._httpClient.post<any>(this.authURL + 'url/mascota', reg);
+    return this._httpClient.post<any>(this.baseURL + 'url/mascota/create', reg);
   }
 }

@@ -1,60 +1,85 @@
 <app-sidebar></app-sidebar>
 
 <div class="content-page">
-    <div class="content">
+  <div class="content">
+    <app-topbar></app-topbar>
 
-        <app-topbar></app-topbar>
-
-        <!-- Start Content-->
-        <div class="container-fluid">
-            <!-- start page title -->
-            <div class="row">
-                <div class="col-12">
-                    <div class="page-title-box">
-                        <div class="page-title-right">
-                            <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item"><a style="cursor: pointer;"
-                                        href="javascript: void(0);">Hyper</a></li>
-                                <li class="breadcrumb-item"><a style="cursor: pointer;"
-                                        routerLink="/dashboard/mascot">Mascota</a></li>
-                                <li class="breadcrumb-item active">Crear Mascota</li>
-                            </ol>
-                        </div>
-                        <h4 class="page-title">Crear Mascota</h4>
-                    </div>
-                </div>
+    <!-- Start Content-->
+    <div class="container-fluid">
+      <!-- start page title -->
+      <div class="row">
+        <div class="col-12">
+          <div class="page-title-box">
+            <div class="page-title-right">
+              <ol class="breadcrumb m-0">
+                <li class="breadcrumb-item">
+                  <a style="cursor: pointer" href="javascript: void(0);"
+                    >Hyper</a
+                  >
+                </li>
+                <li class="breadcrumb-item">
+                  <a style="cursor: pointer" routerLink="/dashboard/mascot"
+                    >Mascota</a
+                  >
+                </li>
+                <li class="breadcrumb-item active">Crear Mascota</li>
+              </ol>
             </div>
-            <!-- end page title -->
-            <!-- start page title -->
-            <div class="row">
-                <div class="col-12">
-                    <form (ngSubmit)="register()">
-                        <div class="mb-3">
-                            <label class="form-label" for="validationCustom01">Nombre</label>
-                            <input
-                                type="text"
-                                class="form-control"
-                                name="nom_mascota"
-                                id="nombre"
-                                [(ngModel)]="mascot.nom_mascota"
-                                required/>  
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="validationCustom02">Raza</label>
-                            <input type="text" class="form-control" id="validationCustom02" placeholder="Ingrese su razo"
-                                name="sexo_mascota" [(ngModel)]="mascot.sexo_mascota" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="validationCustom02">Sexo</label>
-                            <input type="text" class="form-control" id="validationCustom02" placeholder="Ingrese su sexo"
-                                name="raza_mascota" [(ngModel)]="mascot.raza_mascota" required>
-                        </div>
-                        <button class="btn btn-primary mb-4" type="submit">Registrar Propietario</button>
-                    </form>
-                </div>
+            <h4 class="page-title">Crear Mascota</h4>
+          </div>
+        </div>
+      </div>
+      <!-- end page title -->
+      <!-- start page title -->
+      <div class="row">
+        <div class="col-12">
+          <form #registerMascot="ngForm" (ngSubmit)="register(registerMascot)">
+            <div class="mb-3">
+              <label class="form-label" for="validationCustom01">Nombre</label>
+              <input
+                type="text"
+                class="form-control"
+                name="nom_mascota"
+                id="nombre"
+                [(ngModel)]="mascot.nom_mascota"
+                placeholder="Ingrese su nombre"
+                required
+              />
             </div>
-            <!-- end page title -->
-        </div> <!-- container -->
-    </div> <!-- content -->
-    <app-footer></app-footer>
+            <div class="mb-3">
+              <label class="form-label" for="validationCustom02">Sexo</label>
+              <input
+                type="text"
+                class="form-control"
+                id="validationCustom02"
+                placeholder="Ingrese su sexo"
+                name="sexo_mascota"
+                [(ngModel)]="mascot.sexo_mascota"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="validationCustom02">Raza</label>
+              <input
+                type="text"
+                class="form-control"
+                id="validationCustom02"
+                placeholder="Ingrese su raza"
+                name="raza_mascota"
+                [(ngModel)]="mascot.raza_mascota"
+                required
+              />
+            </div>
+            <button class="btn btn-primary mb-4" type="submit">
+              Registrar Mascota
+            </button>
+          </form>
+        </div>
+      </div>
+      <!-- end page title -->
+    </div>
+    <!-- container -->
+  </div>
+  <!-- content -->
+  <app-footer></app-footer>
 </div>

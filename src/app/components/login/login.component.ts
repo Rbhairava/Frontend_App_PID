@@ -4,14 +4,11 @@ import { LoginUser } from 'src/app/models/login-user';
 import { AuthService } from 'src/app/services/auth.service';
 import { TokenService } from 'src/app/services/token.service';
 
-declare var jQuery:any;
-declare var $:any;
 declare var iziToast;
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  templateUrl: './login.component.html'
 })
 export class LoginComponent implements OnInit {
   
@@ -35,7 +32,7 @@ export class LoginComponent implements OnInit {
     } 
   }
 
-  login(loginForm:any) {
+  login(loginForm:any) {    
     if (loginForm.valid) {
       this.loginUser = new LoginUser(this.userName, this.password);
       this._authService.login_admin(this.loginUser).subscribe(
@@ -51,6 +48,14 @@ export class LoginComponent implements OnInit {
               color: 'red',
               timeout: 1000,
               message: 'Usuario o contraseña incorrecta'
+            });
+          } else if (err.status == 0) {
+            iziToast.show({
+              title: 'Error',
+              position: 'topRight',
+              color: 'red',
+              timeout: 2000,
+              message: 'El Backend no esta inicializado'
             });
           }
           console.log(err);

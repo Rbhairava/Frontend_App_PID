@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Mascot } from 'src/app/models/mascot';
 import { MascotService } from 'src/app/services/mascot.service';
+
+declare var iziToast;
 
 @Component({
   selector: 'app-create-mascot',
@@ -12,7 +15,7 @@ export class CreateMascotComponent implements OnInit {
 
   // form!: FormGroup;
 
-  public mascot: any = {
+  public mascot: Mascot = {
     cod_mascota: 0,
     nom_mascota:'',
     sexo_mascota:'',
@@ -20,9 +23,10 @@ export class CreateMascotComponent implements OnInit {
   };
 
   constructor(
+    private _mascotService: MascotService,
+    private _router: Router,
     // private _formBuilder: FormBuilder,
-    private _mascotService: MascotService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
   }
@@ -38,19 +42,40 @@ export class CreateMascotComponent implements OnInit {
   //   this.form.invalid
   // }
 
-  register() {
-    // event.preventDefault();
-    // const value = this.form.value;
-    console.log(this.mascot);
+  register(registerMascot:any) {
+    if (registerMascot.valid) {
+      this._mascotService.addMascot(this.mascot).subscribe(
+        res=> {
+          iziToast.show({
+            title: 'Registrado',
+            position: 'topRight',
+            color: '#A4E2B2',
+            timeout: 3000,
+            message: 'Se registro la mascota correctamente.'
+          });
+          this._router.navigate(['/dashboard/mascot']);
+        },
+        err=> {
+          iziToast.show({
+            title: 'Error',
+            position: 'topRight',
+            color: 'red',
+            timeout: 3000,
+            message: 'No se registró, consulte con el administrador.'
+          });
+          console.log(err);          
+        }
+      );      
+    } else {
+      iziToast.show({
+        title: 'Error',
+        position: 'topRight',
+        color: 'red',
+        timeout: 3000,
+        message: 'Complete todos los datos del formulario.'
+      });
+    }
 
-    this._mascotService.addMascot(this.mascot).subscribe(
-      res=> {
-        alert('Se registró correctamente.');
-      },
-      err=> {
-        alert('Error al insertar');
-      }
-    );
   }
 
 }
