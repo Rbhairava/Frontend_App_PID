@@ -47,6 +47,7 @@ export class CreateOwnerComponent implements OnInit {
             timeout: 3000,
             message: 'Se registro el propietario correctamente.'
           });
+          console.log(res);          
           this._router.navigate(['/dashboard/owner']);
         }, 
         err=> {

@@ -16,9 +16,11 @@
                   <a href="javascript: void(0);">Hyper</a>
                 </li>
                 <li class="breadcrumb-item">
-                  <a href="javascript: void(0);">Dashboard</a>
+                  <a style="cursor: pointer" routerLink="/dashboard/owner"
+                    >Propietario</a
+                  >
                 </li>
-                <li class="breadcrumb-item active">Propietario</li>
+                <li class="breadcrumb-item active">Crear Propietario</li>
               </ol>
             </div>
             <h4 class="page-title">Crear Propietario</h4>
@@ -41,7 +43,6 @@
                 placeholder="Ingrese su nombre"
                 required
               />
-              <div class="valid-feedback">¡Se ve bien!</div>
             </div>
             <div class="mb-3">
               <label class="form-label" for="validationCustom02">DNI</label>
@@ -54,7 +55,6 @@
                 placeholder="Ingrese su DNI"
                 required
               />
-              <div class="valid-feedback">¡Se ve bien!</div>
             </div>
             <div class="mb-3">
               <label for="example-number" class="form-label">Edad</label>
@@ -80,29 +80,6 @@
                 [(ngModel)]="owner.correo_propietario"
                 placeholder="Ingrese su correo electrónico"
                 required
-              />
-              <div class="valid-feedback">¡Se ve bien!</div>
-            </div>
-            <div class="mb-3">
-              <label for="example-date" class="form-label">Fecha inicio</label>
-              <input
-                class="form-control"
-                id="example-date"
-                name="fecha_incio_contrato"
-                [(ngModel)]="owner.fecha_incio_contrato"
-                type="date"
-                name="date"
-              />
-            </div>
-            <div class="mb-3">
-              <label for="example-date" class="form-label">Fecha fin</label>
-              <input
-                class="form-control"
-                id="example-date"
-                name="fecha_fin_contrato"
-                [(ngModel)]="owner.fecha_fin_contrato"
-                type="date"
-                name="date"
               />
             </div>
             <div class="mb-3">

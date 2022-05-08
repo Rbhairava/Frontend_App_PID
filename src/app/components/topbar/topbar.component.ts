@@ -10,13 +10,17 @@ export class TopbarComponent implements OnInit {
 
   username: string;
 
+  public role:any = '';
+
   constructor(
     private _tokenService: TokenService,
     private _router: Router
-  ) { }
+  ) { 
+    this.username = this._tokenService.getUserName();
+    this.role = this._tokenService.getRole();     
+  }
 
   ngOnInit(): void {
-    this.username = this._tokenService.getUserName();
   }
 
   onLogOut(): void {

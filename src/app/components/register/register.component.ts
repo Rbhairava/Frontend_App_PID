@@ -44,9 +44,9 @@ export class RegisterComponent implements OnInit {
             timeout: 3000,
             message: 'Registro Exitoso'
           });
+          this._router.navigate(['/login']);
           console.log(res);
           
-          this._router.navigate(['/login']);
         },
         err=> {
           if (err.status == 401) {
