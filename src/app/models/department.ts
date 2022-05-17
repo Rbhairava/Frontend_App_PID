@@ -1,12 +1,17 @@
-import { Owner } from "./owner";
+import { DepartmentTypes } from "./department-types";
+import { Tower } from "./tower";
+import { User } from "./user";
 
 export class Department {
-    cod_propietario: number;
-    num_departamento: number;
-    piso_departamento: number;
-    estado: number;
-    condiciones_departamento: string;
-    metros_cuadrados: number;
-    tipo_departamento: number;
-    propietario: Owner;
+    id: number;
+    name: string;
+    number: number;
+    floor: number;
+    numberRooms: number;
+    status: number;
+    squareMeters: number;
+    joinDate: Date;
+    tower: Tower;
+    departmentTypes: DepartmentTypes;
+    user: User;
 }

@@ -18,4 +18,8 @@ export class UsersService {
   listUsers():Observable<User[]>{
     return this._httpClient.get<User[]>(this.baseURL+"auth/list");
   }
+
+  addUser(reg:User): Observable<any> {
+    return this._httpClient.post<any>(this.baseURL + 'auth/register', reg);
+  }
 }

@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Department } from 'src/app/models/department';
 import { Mascot } from 'src/app/models/mascot';
+import { User } from 'src/app/models/user';
+import { DepartamentService } from 'src/app/services/department.service';
 import { MascotService } from 'src/app/services/mascot.service';
+import { UsersService } from 'src/app/services/users.service';
 
 declare var iziToast;
 
@@ -15,18 +19,32 @@ export class CreateMascotComponent implements OnInit {
 
   // form!: FormGroup;
 
-  public mascot: Mascot = {
-    cod_mascota: 0,
-    nom_mascota:'',
-    sexo_mascota:'',
-    raza_mascota: ''
+  listUsers: User[] = [];
+  listDepartments: Department[] = [];
+
+  public mascot: any = {
+    id: 0,
+    name:'',
+    sex:'',
+    race: '',
+    user:{
+      id: ''
+    },
+    department:{
+      id: ''
+    }
   };
 
   constructor(
     private _mascotService: MascotService,
-    private _router: Router,
+    private _userService: UsersService,
+    private _departmentService: DepartamentService,
+    private _router: Router
     // private _formBuilder: FormBuilder,
-  ) {}
+  ) {
+    this._userService.listUsers().subscribe(res=> this.listUsers = res);
+    this._departmentService.listDepartment().subscribe(res=> this.listDepartments = res);
+  }
 
   ngOnInit(): void {
   }
@@ -46,13 +64,25 @@ export class CreateMascotComponent implements OnInit {
     if (registerMascot.valid) {
       this._mascotService.addMascot(this.mascot).subscribe(
         res=> {
+          this.mascot = {
+            id: 0,
+            name:'',
+            sex:'',
+            race: '',
+            user:{
+              id: 0
+            },
+            deparment:{
+              id: 0
+            }
+          }
           iziToast.show({
             title: 'Registrado',
             position: 'topRight',
             color: '#A4E2B2',
             timeout: 3000,
             message: 'Se registro la mascota correctamente.'
-          });
+          });          
           this._router.navigate(['/dashboard/mascot']);
         },
         err=> {

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Department } from '../models/department';
+import { DepartmentTypes } from '../models/department-types';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,10 @@ export class DepartamentService {
 
   listDepartment():Observable<Department[]>{
     return this._httpClient.get<Department[]>(this.baseURL+"url/departamento/list");
+  }
+
+  listDepartmentTypes():Observable<DepartmentTypes[]>{
+    return this._httpClient.get<DepartmentTypes[]>(this.baseURL+"url/departamento/listdepartmenttypes");
   }
 
   addDepartment(reg:Department): Observable<any> {

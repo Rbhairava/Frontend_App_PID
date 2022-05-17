@@ -33,15 +33,19 @@
                         <th>Nombre</th>
                         <th>Sexo</th>
                         <th>Raza</th>
+                        <th>Propietario</th>
+                        <th>Departamento</th>
                         <th style="width: 110px">Acciones</th>
                       </tr>
                     </thead>
                     <tbody *ngFor="let item of pets; let indice = index">
                       <tr>
                         <td>{{ indice + 1 }}</td>
-                        <td>{{ item.nom_mascota }}</td>
-                        <td>{{ item.sexo_mascota }}</td>
-                        <td>{{ item.raza_mascota }}</td>
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.sex }}</td>
+                        <td>{{ item.race }}</td>
+                        <td>{{ item.user?.name }}</td>
+                        <td>{{ item.department?.name }}</td>
 
                         <td class="table-action">
                           <a style="cursor: pointer" class="action-icon">

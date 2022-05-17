@@ -1,6 +1,11 @@
+import { Department } from "./department";
+import { User } from "./user";
+
 export class Mascot {
-    cod_mascota: number;
-    nom_mascota: string;
-    sexo_mascota: string;
-    raza_mascota: string;
+    id: number;
+    name: string;
+    sex: string;
+    race: string;
+    user: User;
+    department: Department;
 }

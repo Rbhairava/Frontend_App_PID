@@ -31,26 +31,30 @@
       <!-- start page title -->
       <div class="row">
         <div class="col-12">
-          <form class="needs-validation" novalidate>
+          <form #registerDepartment="ngForm" (ngSubmit)="register(registerDepartment)">
             <div class="mb-3">
-              <label class="form-label" for="validationCustom01"
-                >Condiciones</label
+              <label class="form-label" for="name"
+                >Nombre</label
               >
               <input
                 type="text"
                 class="form-control"
-                id="validationCustom01"
+                name="name"
+                id="name"
+                [(ngModel)]="department.name"
                 placeholder="Ingrese la condición"
                 required
               />
             </div>
             <div class="mb-3">
-              <label class="form-label" for="validationCustom02">Estado</label>
+              <label class="form-label" for="validationCustom02">N° departamento</label>
               <input
                 type="text"
                 class="form-control"
-                id="validationCustom02"
-                placeholder="Ingrese el estado"
+                name="number"
+                id="number"
+                [(ngModel)]="department.number"
+                placeholder="Ingrese el número"
                 required
               />
             </div>
@@ -59,64 +63,77 @@
               <input
                 type="text"
                 class="form-control"
-                id="validationCustom02"
-                placeholder="Ingrese los metros"
+                name="squareMeters"
+                id="squareMeters"
+                [(ngModel)]="department.squareMeters"
+                placeholder="Ingrese los metros cuadrados"
                 required
               />
-            </div>
-            <div class="mb-3">
-              <label class="form-label" for="validationCustom02">Número</label>
-              <input
-                type="text"
-                class="form-control"
-                id="validationCustom02"
-                placeholder="Ingrese el número"
-                required
-              />
-            </div>
+            </div>            
             <div class="mb-3">
               <label class="form-label" for="validationCustom02">Piso</label>
               <input
                 type="text"
                 class="form-control"
-                id="validationCustom02"
+                name="floor"
+                id="floor"
+                [(ngModel)]="department.floor"
                 placeholder="Ingrese el piso"
                 required
               />
             </div>
             <div class="mb-3">
-              <label class="form-label" for="validationCustom02">Tipo</label>
+              <label class="form-label" for="validationCustom02">N° habitaciones</label>
               <input
                 type="text"
                 class="form-control"
-                id="validationCustom02"
-                placeholder="Ingrese el tipo"
+                name="numberRooms"
+                id="numberRooms"
+                [(ngModel)]="department.numberRooms"
+                placeholder="Ingrese el número de las habitaciones"
                 required
               />
             </div>
             <div class="mb-3">
-              <label class="form-label" for="validationCustom02">Admin</label>
-              <select id="user" name="" class="form-control" required>
-                <option value="" disabled selected>[Seleccione]</option>
-                <option></option>
+              <label class="form-label" for="validationCustom02">Edificio</label>
+              <select
+                id="tower"
+                name="tower"
+                class="form-control"
+                [(ngModel)]="department.tower!.id"
+              >
+                <option value="" disabled selected>[Seleccione Edificio]</option>
+                <option value="{{ item.id }}" *ngFor="let item of listTowers">
+                  {{ item.name }}
+                </option>
               </select>
             </div>
             <div class="mb-3">
-              <label class="form-label" for="validationCustom02"
-                >Edificio</label
+              <label class="form-label" for="validationCustom02">Tipo</label>
+              <select
+                id="departmentTypes"
+                name="departmentTypes"
+                class="form-control"
+                [(ngModel)]="department.departmentTypes!.id"
               >
-              <select id="user" name="" class="form-control" required>
-                <option value="" disabled selected>[Seleccione]</option>
-                <option></option>
+                <option value="" disabled selected>[Seleccione tipo departamento]</option>
+                <option value="{{ item.id }}" *ngFor="let item of listDepartmentTypes">
+                  {{ item.name }}
+                </option>
               </select>
             </div>
             <div class="mb-3">
-              <label class="form-label" for="validationCustom02"
-                >Propietario</label
+              <label class="form-label" for="validationCustom02">Propietario</label>
+              <select
+                id="user"
+                name="user"
+                class="form-control"
+                [(ngModel)]="department.user!.id"
               >
-              <select id="user" name="" class="form-control" required>
-                <option value="" disabled selected>[Seleccione]</option>
-                <option></option>
+                <option value="" disabled selected>[Seleccione propietario]</option>
+                <option value="{{ item.id }}" *ngFor="let item of listUsers">
+                  {{ item.name }}
+                </option>
               </select>
             </div>
             <button class="btn btn-primary mb-4" type="submit">

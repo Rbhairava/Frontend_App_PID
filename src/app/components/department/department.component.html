@@ -30,30 +30,32 @@
                     <thead class="table-light">
                       <tr>
                         <th>#</th>
-                        <th>Condiciones</th>
-                        <th>Estado</th>
+                        <th>Nombre</th>
+                        <th>N° departamento</th>
                         <th>Metros</th>
-                        <th>Número</th>
                         <th>Piso</th>
-                        <th>Tipo</th>
-                        <th>Admin</th>
+                        <th>N° habitaciones</th>
                         <th>Edificio</th>
+                        <th>Tipo</th>
                         <th>Propietario</th>
+                        <th>Estado</th>
+                        <th>Fecha de Registro</th>
                         <th style="width: 110px">Acciones</th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody *ngFor="let item of listDepartments; let indice = index">
                       <tr>
-                        <td>1</td>
-                        <td>Condiciones</td>
-                        <td>Estado</td>
-                        <td>Metros</td>
-                        <td>234</td>
-                        <td>5</td>
-                        <td>Tipo</td>
-                        <td>Aeron Chairs</td>
-                        <td>Aeron Chairs</td>
-                        <td>Aeron Chairs</td>
+                        <td>{{ indice + 1 }}</td>
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.number }}</td>
+                        <td>{{ item.squareMeters }}</td>
+                        <td>{{ item.floor }}</td>
+                        <td>{{ item.numberRooms }}</td>
+                        <td>{{ item.tower.name }}</td>
+                        <td>{{ item.departmentTypes.name }}</td>
+                        <td>{{ item.user.name }}</td>
+                        <td>{{ item.status }}</td>
+                        <td>{{ item.joinDate }}</td>
                         <td class="table-action">
                           <a style="cursor: pointer" class="action-icon">
                             <i class="mdi mdi-eye"></i

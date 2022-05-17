@@ -39,9 +39,9 @@
               <input
                 type="text"
                 class="form-control"
-                name="nom_mascota"
-                id="nombre"
-                [(ngModel)]="mascot.nom_mascota"
+                name="name"
+                id="name"
+                [(ngModel)]="mascot.name"
                 placeholder="Ingrese su nombre"
                 required
               />
@@ -51,10 +51,10 @@
               <input
                 type="text"
                 class="form-control"
-                id="validationCustom02"
+                id="sex"
                 placeholder="Ingrese su sexo"
-                name="sexo_mascota"
-                [(ngModel)]="mascot.sexo_mascota"
+                name="sex"
+                [(ngModel)]="mascot.sex"
                 required
               />
             </div>
@@ -63,12 +63,42 @@
               <input
                 type="text"
                 class="form-control"
-                id="validationCustom02"
+                id="race"
                 placeholder="Ingrese su raza"
-                name="raza_mascota"
-                [(ngModel)]="mascot.raza_mascota"
+                name="race"
+                [(ngModel)]="mascot.race"
                 required
               />
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label" for="validationCustom02">Propietario</label>
+              <select
+                id="user"
+                name="user"
+                class="form-control"
+                [(ngModel)]="mascot.user!.id"
+              >
+                <option value="" disabled selected>[Seleccione Propietario]</option>
+                <option value="{{ item.id }}" *ngFor="let item of listUsers">
+                  {{ item.name }}
+                </option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label" for="validationCustom02">Departamento</label>
+              <select
+                id="department"
+                name="department"
+                class="form-control"
+                [(ngModel)]="mascot.department!.id"
+              >
+                <option value="" disabled selected>[Seleccione Departamento]</option>
+                <option value="{{ item.id }}" *ngFor="let item of listDepartments">
+                  {{ item.name }}
+                </option>
+              </select>
             </div>
             <button class="btn btn-primary mb-4" type="submit">
               Registrar Mascota
