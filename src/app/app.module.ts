@@ -21,6 +21,8 @@ import { CreateOwnerComponent } from './components/owner/create-owner/create-own
 import { CreateDepartmentComponent } from './components/department/create-department/create-department.component';
 import { CreateVisitComponent } from './components/visit/create-visit/create-visit.component';
 import { CreateMascotComponent } from './components/mascot/create-mascot/create-mascot.component';
+import { CreateUserComponent } from './components/register/create-user/create-user.component';
+import { UserComponent } from './components/register/user/user.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { CreateMascotComponent } from './components/mascot/create-mascot/create-
     CreateOwnerComponent,
     CreateDepartmentComponent,
     CreateVisitComponent,
-    CreateMascotComponent
+    CreateMascotComponent,
+    CreateUserComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,

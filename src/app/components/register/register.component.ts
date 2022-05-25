@@ -33,53 +33,53 @@ export class RegisterComponent implements OnInit {
   }
 
   register(registerForm:any) {
-    if (registerForm.valid) {
-      this.newUser = new NewUser(this.name, this.username,this.email,this.password);
-      this._authService.new(this.newUser).subscribe(
-        res=> {
-          iziToast.show({
-            title: 'Success',
-            position: 'bottomRight',
-            color: 'blue',
-            timeout: 3000,
-            message: 'Registro Exitoso'
-          });
-          this._router.navigate(['/login']);
-          console.log(res);
+    // if (registerForm.valid) {
+    //   this.newUser = new NewUser(this.name, this.username,this.email,this.password);
+    //   this._authService.new(this.newUser).subscribe(
+    //     res=> {
+    //       iziToast.show({
+    //         title: 'Success',
+    //         position: 'bottomRight',
+    //         color: 'blue',
+    //         timeout: 3000,
+    //         message: 'Registro Exitoso'
+    //       });
+    //       this._router.navigate(['/login']);
+    //       console.log(res);
           
-        },
-        err=> {
-          if (err.status == 401) {
-            iziToast.show({
-              title: 'Error',
-              position: 'bottomRight',
-              color: 'red',
-              timeout: 3000,
-              message: `${err.error}`
-            });
-          }
-          if (err.status == 400) {
-            iziToast.show({
-              title: 'Error',
-              position: 'bottomRight',
-              color: 'red',
-              timeout: 3000,
-              message: `${err.error}`
-            });
-          }
-        }
-      );
+    //     },
+    //     err=> {
+    //       if (err.status == 401) {
+    //         iziToast.show({
+    //           title: 'Error',
+    //           position: 'bottomRight',
+    //           color: 'red',
+    //           timeout: 3000,
+    //           message: `${err.error}`
+    //         });
+    //       }
+    //       if (err.status == 400) {
+    //         iziToast.show({
+    //           title: 'Error',
+    //           position: 'bottomRight',
+    //           color: 'red',
+    //           timeout: 3000,
+    //           message: `${err.error}`
+    //         });
+    //       }
+    //     }
+    //   );
 
-    } else {
+    // } else {
 
-      iziToast.show({
-        title: 'Error',
-        position: 'bottomRight',
-        color: 'red',
-        timeout: 3000,
-        message: 'Complete todos los datos del formulario.'
-      });
-    }
+    //   iziToast.show({
+    //     title: 'Error',
+    //     position: 'bottomRight',
+    //     color: 'red',
+    //     timeout: 3000,
+    //     message: 'Complete todos los datos del formulario.'
+    //   });
+    // }
 
   }
 

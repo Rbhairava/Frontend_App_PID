@@ -12,13 +12,15 @@ import { CreateOwnerComponent } from "./components/owner/create-owner/create-own
 import { CreateDepartmentComponent } from "./components/department/create-department/create-department.component";
 import { CreateMascotComponent } from "./components/mascot/create-mascot/create-mascot.component";
 import { CreateVisitComponent } from "./components/visit/create-visit/create-visit.component";
+import { UserComponent } from "./components/register/user/user.component";
+import { CreateUserComponent } from "./components/register/create-user/create-user.component";
 
 const appRoute: Routes = [
     {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
     {path: 'dashboard', component: DashboardComponent, canActivate: [AdminGuard]},
     {path: 'dashboard', children: [
-        {path: 'owner', component: OwnerComponent, canActivate: [AdminGuard]},
-        {path: 'owner/create', component: CreateOwnerComponent, canActivate: [AdminGuard]},
+        {path: 'user', component: UserComponent, canActivate: [AdminGuard]},
+        {path: 'user/create', component: CreateUserComponent, canActivate: [AdminGuard]},
         {path: 'department', component: DepartmentComponent, canActivate: [AdminGuard]},
         {path: 'department/create', component: CreateDepartmentComponent, canActivate: [AdminGuard]},
         {path: 'mascot', component: MascotComponent, canActivate: [AdminGuard]},

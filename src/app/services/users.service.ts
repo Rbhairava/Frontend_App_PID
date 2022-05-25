@@ -19,6 +19,10 @@ export class UsersService {
     return this._httpClient.get<User[]>(this.baseURL+"auth/list");
   }
 
+  listRoles():Observable<any>{
+    return this._httpClient.get<any>(this.baseURL+"auth/listrole");
+  }
+
   addUser(reg:User): Observable<any> {
     return this._httpClient.post<any>(this.baseURL + 'auth/register', reg);
   }

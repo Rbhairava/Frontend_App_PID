@@ -17,7 +17,7 @@ export class DepartmentComponent implements OnInit {
   ngOnInit(): void {
     this._departmentService.listDepartment().subscribe(
       res=> {
-        this.listDepartments = res;
+        this.listDepartments = res;        
       },
       err=> {
         console.log(err);        
