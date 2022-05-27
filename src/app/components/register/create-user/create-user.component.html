@@ -106,20 +106,22 @@
                 required
               />
             </div>
+
             <div class="mb-3">
               <label class="form-label" for="validationCustom02">Rol de usuario</label>
               <select
                 id="roles"
                 name="roles"
                 class="form-control"                
-                [(ngModel)]="newuser.roles"
+                [(ngModel)]="role"
               >
                 <option value="" disabled selected>[Seleccione Rol de Usuario]</option>
-                <option [value]="item" *ngFor="let item of lista">
-                  {{ item }}
+                <option [value]="item.id" *ngFor="let item of listaRole">
+                  {{ item.desc }}
                 </option>
               </select>
             </div>
+
             <button class="btn btn-primary mb-4" type="submit">
               Registrar Usuario
             </button>

@@ -5,5 +5,9 @@ export class NewUser {
     password: string;
     dni: string;
     phone: string;
-    roles: string[];   
+    roles: string[];
 }
+
+
+
+

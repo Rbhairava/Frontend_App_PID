@@ -14,7 +14,22 @@ declare var iziToast;
 })
 export class CreateUserComponent implements OnInit {
 
-  lista = ['admin','owner'];
+  listaRole = [
+    {
+      id: 'admin',
+      desc: 'Admin'
+    },
+    {
+      id: 'owner',
+      desc: 'Propietario'
+    },
+    {
+      id: '',
+      desc: 'Visitante'
+    }
+  ];
+
+  role: string = "";
 
   newuser: NewUser = {
     name: '',
@@ -23,7 +38,7 @@ export class CreateUserComponent implements OnInit {
     password: '',
     dni: '',
     phone: '',
-    roles: []
+    roles: [] = []
   }
 
   constructor(
@@ -36,7 +51,8 @@ export class CreateUserComponent implements OnInit {
   }
 
   register(registerUser:any) {
-    if (registerUser.valid) {
+    if (registerUser.valid) {  
+      this.newuser.roles.push(this.role);
       this._authService.newUser(this.newuser).subscribe({
         next: res=> {
           console.log(res);          
@@ -49,4 +65,9 @@ export class CreateUserComponent implements OnInit {
     }
   }
 
+
+
+
+
+  
 }
