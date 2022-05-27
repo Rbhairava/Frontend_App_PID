@@ -3,12 +3,9 @@ import { ModuleWithProviders } from "@angular/core";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { LoginComponent } from "./components/login/login.component";
 import { AdminGuard } from "./guards/admin.guard";
-import { RegisterComponent } from "./components/register/register.component";
-import { OwnerComponent } from "./components/owner/owner.component";
 import { DepartmentComponent } from "./components/department/department.component";
 import { MascotComponent } from "./components/mascot/mascot.component";
 import { VisitComponent } from "./components/visit/visit.component";
-import { CreateOwnerComponent } from "./components/owner/create-owner/create-owner.component";
 import { CreateDepartmentComponent } from "./components/department/create-department/create-department.component";
 import { CreateMascotComponent } from "./components/mascot/create-mascot/create-mascot.component";
 import { CreateVisitComponent } from "./components/visit/create-visit/create-visit.component";
@@ -29,8 +26,7 @@ const appRoute: Routes = [
         {path: 'visit/create', component: CreateVisitComponent, canActivate: [AdminGuard]},
     ]},
 
-    {path: 'login', component: LoginComponent},
-    {path: 'register', component: RegisterComponent}
+    {path: 'login', component: LoginComponent}
 ]
 
 export const appRoutingProvider: any[]=[];

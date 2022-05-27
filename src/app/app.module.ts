@@ -9,7 +9,6 @@ import { routing } from "./app.routing";
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
 import { interceptorProvider } from './services/interceptor.service';
 import { OwnerComponent } from './components/owner/owner.component';
 import { DepartmentComponent } from './components/department/department.component';
@@ -30,7 +29,6 @@ import { UserComponent } from './components/register/user/user.component';
     DashboardComponent,
     SidebarComponent,
     LoginComponent,
-    RegisterComponent,
     OwnerComponent,
     DepartmentComponent,
     MascotComponent,
