@@ -15,10 +15,6 @@ export class UsersService {
     private _httpClient: HttpClient
   ) { }
 
-  listUsers():Observable<User[]>{
-    return this._httpClient.get<User[]>(this.baseURL+"auth/list");
-  }
-
   listRoles():Observable<any>{
     return this._httpClient.get<any>(this.baseURL+"auth/listrole");
   }

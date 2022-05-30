@@ -6,6 +6,7 @@ export class User {
     password: string;
     dni: string;
     phone: string;
-    joinDate: Date;
+    joinDate: string;
     status: number;
+    // roles: string[];
 }

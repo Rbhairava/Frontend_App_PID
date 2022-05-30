@@ -3,9 +3,9 @@ import { Router } from '@angular/router';
 import { DepartmentTypes } from 'src/app/models/department-types';
 import { Tower } from 'src/app/models/tower';
 import { User } from 'src/app/models/user';
+import { AuthService } from 'src/app/services/auth.service';
 import { DepartamentService } from 'src/app/services/department.service';
 import { TowerService } from 'src/app/services/tower.service';
-import { UsersService } from 'src/app/services/users.service';
 
 declare var iziToast;
 
@@ -42,11 +42,11 @@ export class CreateDepartmentComponent implements OnInit {
   constructor(
     private _router: Router,
     private _departmentService: DepartamentService,
-    private _userService: UsersService,
+    private _authSercive: AuthService,
     private _towerService: TowerService,
   ) { 
     this._towerService.listTowers().subscribe(res=> this.listTowers = res);
-    this._userService.listUsers().subscribe(res=> this.listUsers = res);
+    this._authSercive.listUsers().subscribe(res=> this.listUsers = res);
     this._departmentService.listDepartmentTypes().subscribe(res=> this.listDepartmentTypes = res);
   }
 

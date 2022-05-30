@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Owner } from 'src/app/models/owner';
 import { User } from 'src/app/models/user';
+import { AuthService } from 'src/app/services/auth.service';
 import { OwnerService } from 'src/app/services/owner.service';
 import { UsersService } from 'src/app/services/users.service';
 
@@ -26,9 +27,9 @@ export class CreateOwnerComponent implements OnInit {
   constructor(
     private _router: Router,
     private _ownerService: OwnerService,
-    private _userService: UsersService
+    private _authSercive: AuthService,
   ) { 
-    this._userService.listUsers().subscribe(
+    this._authSercive.listUsers().subscribe(
       res=> this.listUser = res
     );
   }

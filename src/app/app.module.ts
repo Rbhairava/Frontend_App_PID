@@ -22,6 +22,7 @@ import { CreateVisitComponent } from './components/visit/create-visit/create-vis
 import { CreateMascotComponent } from './components/mascot/create-mascot/create-mascot.component';
 import { CreateUserComponent } from './components/register/create-user/create-user.component';
 import { UserComponent } from './components/register/user/user.component';
+import { UpdateUserComponent } from './components/register/update-user/update-user.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { UserComponent } from './components/register/user/user.component';
     CreateVisitComponent,
     CreateMascotComponent,
     CreateUserComponent,
-    UserComponent
+    UserComponent,
+    UpdateUserComponent
   ],
   imports: [
     BrowserModule,

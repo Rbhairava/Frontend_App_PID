@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Department } from 'src/app/models/department';
 import { Mascot } from 'src/app/models/mascot';
 import { User } from 'src/app/models/user';
+import { AuthService } from 'src/app/services/auth.service';
 import { DepartamentService } from 'src/app/services/department.service';
 import { MascotService } from 'src/app/services/mascot.service';
 import { UsersService } from 'src/app/services/users.service';
@@ -37,12 +38,12 @@ export class CreateMascotComponent implements OnInit {
 
   constructor(
     private _mascotService: MascotService,
-    private _userService: UsersService,
+    private _authSercive: AuthService,
     private _departmentService: DepartamentService,
     private _router: Router
     // private _formBuilder: FormBuilder,
   ) {
-    this._userService.listUsers().subscribe(res=> this.listUsers = res);
+    this._authSercive.listUsers().subscribe(res=> this.listUsers = res);
     this._departmentService.listDepartment().subscribe(res=> this.listDepartments = res);
   }
 

@@ -64,25 +64,25 @@
                         </tr>
                     </tbody> -->
                     <tbody *ngFor="let item of users; let indice = index">
-                        <tr>
-                          <td>{{ indice + 1 }}</td>
-                          <td>{{ item.name }}</td>
-                          <td>{{ item.email }}</td>
-                          <td>{{ item.username }}</td>
-                          <td>{{ item.dni }}</td>
-                          <td>{{ item.phone }}</td>
-                          <td>{{ item.joinDate }}</td>
-                          <td>{{ getEstado(item.status == null?0:item.status) }}</td>
-                          <td class="table-action">
-                            <a style="cursor: pointer" class="action-icon">
-                              <i class="mdi mdi-square-edit-outline"></i
-                            ></a>
-                            <a style="cursor: pointer" class="action-icon">
-                              <i class="mdi mdi-delete"></i
-                            ></a>
-                          </td>
-                        </tr>
-                      </tbody>
+                      <tr *ngIf="item.username != 'admin' && item.status != 1">
+                        <td>{{ indice + 1 }}</td>
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.email }}</td>
+                        <td>{{ item.username }}</td>
+                        <td>{{ item.dni }}</td>
+                        <td>{{ item.phone }}</td>
+                        <td>{{ item.joinDate }}</td>
+                        <td>{{ getEstado(item.status == null?0:item.status) }}</td>
+                        <td class="table-action">
+                          <a style="cursor: pointer" class="action-icon" [routerLink]="['/dashboard/user/update/', item.id]" >
+                            <i class="mdi mdi-square-edit-outline"></i
+                          ></a>
+                          <a style="cursor: pointer" class="action-icon" (click)="deleteUser(item)">
+                            <i class="mdi mdi-delete"></i
+                          ></a>
+                        </td>
+                      </tr>
+                    </tbody>
                   </table>
                 </div>
               </div>

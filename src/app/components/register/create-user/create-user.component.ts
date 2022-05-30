@@ -24,7 +24,7 @@ export class CreateUserComponent implements OnInit {
       desc: 'Propietario'
     },
     {
-      id: '',
+      id: 'user',
       desc: 'Visitante'
     }
   ];
@@ -55,11 +55,26 @@ export class CreateUserComponent implements OnInit {
       this.newuser.roles.push(this.role);
       this._authService.newUser(this.newuser).subscribe({
         next: res=> {
-          console.log(res);          
+          iziToast.show({
+            title: 'Registrado',
+            position: 'topRight',
+            color: '#A4E2B2',
+            timeout: 3000,
+            message: `${res.mensaje}`
+          });          
+          this._router.navigate(['/dashboard/user']);
+          console.log(res);              
         },
         error: err=> {
+          iziToast.show({
+            title: 'Error',
+            position: 'topRight',
+            color: 'red',
+            timeout: 3000,
+            message: `${err.error.mensaje}`
+          });   
           console.log(err);
-          
+                 
         }
       });
     }

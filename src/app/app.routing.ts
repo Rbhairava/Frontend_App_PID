@@ -11,6 +11,7 @@ import { CreateMascotComponent } from "./components/mascot/create-mascot/create-
 import { CreateVisitComponent } from "./components/visit/create-visit/create-visit.component";
 import { UserComponent } from "./components/register/user/user.component";
 import { CreateUserComponent } from "./components/register/create-user/create-user.component";
+import { UpdateUserComponent } from "./components/register/update-user/update-user.component";
 
 const appRoute: Routes = [
     {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
@@ -18,6 +19,7 @@ const appRoute: Routes = [
     {path: 'dashboard', children: [
         {path: 'user', component: UserComponent, canActivate: [AdminGuard]},
         {path: 'user/create', component: CreateUserComponent, canActivate: [AdminGuard]},
+        {path: 'user/update/:id', component: UpdateUserComponent, canActivate: [AdminGuard]},
         {path: 'department', component: DepartmentComponent, canActivate: [AdminGuard]},
         {path: 'department/create', component: CreateDepartmentComponent, canActivate: [AdminGuard]},
         {path: 'mascot', component: MascotComponent, canActivate: [AdminGuard]},
