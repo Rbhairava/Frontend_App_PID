@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NewUser } from 'src/app/models/new-user';
-import { User } from 'src/app/models/user';
+import { Visit } from 'src/app/models/visit';
 import { AuthService } from 'src/app/services/auth.service';
 import { VisitService } from 'src/app/services/visit.service';
 
@@ -15,21 +15,24 @@ declare var iziToast;
 })
 export class CreateVisitComponent implements OnInit {
 
-  listaRole = [
-    {
-      id: 'user',
-      desc: 'Visitante'
-    }
-  ];
-
-  role: string = "";
-
   users: NewUser[] = [];
-  user: NewUser;
+
+  visit: any = {
+    id: 0,
+    name:'',
+    dni: '',
+    phone: '',
+    exitDate: '',
+    status: 0,
+    user: {
+      id: 0
+    }
+  };
 
   constructor(
     private _router: Router,
-    private _authService: AuthService
+    private _authService: AuthService,
+    private _visitService: VisitService
   ) {
     this.getUserByRole();
   }
@@ -49,10 +52,9 @@ export class CreateVisitComponent implements OnInit {
     });
   }
 
-  register(registerUser:any) {
-    if (registerUser.valid) {  
-      this.user.roles.push(this.role);
-      this._authService.newUser(this.user).subscribe({
+  register(registerVisit:any) {
+    if (registerVisit.valid) {  
+      this._visitService.addVisit(this.visit).subscribe({
         next: res=> {
           iziToast.show({
             title: 'Registrado',

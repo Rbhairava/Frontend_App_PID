@@ -1,11 +1,12 @@
-import { Owner } from "./owner";
-import { Visitor } from "./visitor";
+import { User } from "./user";
 
 export class Visit {
-    cod_visita: number;
-    fecha_reg_visita: Date;
-    fecha_llegada_visita: Date;
-    fecha_salida_visita: Date;
-    visitante: Visitor;
-    propietario: Owner;
+    id: number;
+    name: string;
+    dni: string;
+    phone: string;
+    entryDate: Date;
+    exitDate: Date;
+    status: number;
+    user: User;    
 }

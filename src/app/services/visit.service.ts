@@ -22,4 +22,8 @@ export class VisitService {
   addVisit(reg:Visit): Observable<any> {
     return this._httpClient.post<any>(this.baseURL + 'url/visita/create', reg);
   }
+
+  changeStatus(changeStatus:Visit): Observable<any> {
+    return this._httpClient.put(this.baseURL + 'url/visita/changeStatus' + `/${changeStatus.id}`,changeStatus);
+  }
 }

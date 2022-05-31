@@ -31,7 +31,7 @@
       <!-- start page title -->
       <div class="row">
         <div class="col-12">
-          <form>
+          <form #registerVisit="ngForm" (ngSubmit)="register(registerVisit)">
             <div class="mb-3">
               <label class="form-label" for="name"
                 >Nombre</label
@@ -43,6 +43,7 @@
                 id="name"
                 placeholder="Ingrese el nombre"
                 required
+                [(ngModel)]="visit.name"
               />
             </div>
             <div class="mb-3">
@@ -54,6 +55,7 @@
                 id="dni"
                 placeholder="Ingrese el DNI"
                 required
+                [(ngModel)]="visit.dni"
               />
             </div>
             <div class="mb-3">
@@ -65,9 +67,10 @@
                 id="phone"
                 placeholder="Ingrese el teléfono"
                 required
+                [(ngModel)]="visit.phone"
               />
             </div>
-            <div class="mb-3">
+            <!-- <div class="mb-3">
               <label class="form-label" for="validationCustom01"
                 >Tipo de usuario</label
               >
@@ -81,7 +84,7 @@
                 {{ item.desc }}
               </option>
               </select>
-            </div>
+            </div> -->
             <div class="mb-3">
               <label class="form-label" for="validationCustom02"
                 >Propietario</label
@@ -91,9 +94,10 @@
                 name="propietario"
                 class="form-control"
                 required
+                [(ngModel)]="visit.user!.id"
               >
                 <option value="" disabled selected>[Seleccione el Propietario]</option>
-                <option [value]="item.id" *ngFor="let item of users">
+                <option [value]="item.id" *ngFor="let item of users">                  
                   {{ item.username  }}
                 </option>
               </select>

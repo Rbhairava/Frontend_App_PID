@@ -35,6 +35,7 @@ export class CreateUserComponent implements OnInit {
     password: '',
     dni: '',
     phone: '',
+    status: 0,
     roles: [] = []
   }
 

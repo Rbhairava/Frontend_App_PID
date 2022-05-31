@@ -6,6 +6,7 @@ export class NewUser {
     password: string;
     dni: string;
     phone: string;
+    status: number;
     roles: string[];
 }
 

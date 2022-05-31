@@ -38,17 +38,17 @@
                         <th style="width: 110px">Acciones</th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody *ngFor="let item of visits; let indice = index">
                       <tr>
-                        <td>1</td>
-                        <td>Aeron Chairs</td>
-                        <td>Aeron Chairs</td>
-                        <td>88888888</td>
-                        <td>09/12/2018</td>
-                        <td>03/02/22</td>
-                        <td><span class="badge bg-success p-1">Ingresó</span></td>
+                        <td>{{ indice + 1 }}</td>
+                        <td>{{ item.user.username }}</td>
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.dni }}</td>
+                        <td>{{ item.entryDate }}</td>
+                        <td>{{ item.exitDate }}</td>
+                        <td>{{ getEstado(item.status == null?0:item.status) }}</td>
                         <td class="table-action">
-                          <button type="button" class="btn btn-primary">Actualizar</button>
+                          <button type="button" class="btn btn-primary" (click)="changeStatus(item)">Actualizar</button>
                         </td>
                       </tr>
                     </tbody>

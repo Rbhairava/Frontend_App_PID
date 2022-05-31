@@ -65,7 +65,7 @@ export class UserComponent implements OnInit {
       error: err=> {
         console.log(err);        
       }
-  });
+    });
   }
 
 }
