@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -18,6 +18,10 @@ export class AuthService {
 
   listUsers():Observable<User[]>{
     return this.httpClient.get<User[]>(this.baseURL+"auth/list");
+  }
+
+  listUsersOwner():Observable<NewUser[]>{
+    return this.httpClient.get<NewUser[]>(this.baseURL+"url/visita/findUserListByRole?id=3");
   }
 
   public newUser(newUser: NewUser): Observable<any> {

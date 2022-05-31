@@ -23,6 +23,8 @@ export class UserComponent implements OnInit {
     this._authService.listUsers().subscribe({
       next: res=> {
         this.users = res;       
+        console.log(this.users);
+        
       },
       error: err=> {
         console.log(err);        

@@ -16,7 +16,7 @@
                     <a style="cursor: pointer"
                        routerLink="/dashboard/visit/create" 
                        class="btn btn-danger mb-2"
-                      ><i class="mdi mdi-plus-circle me-2"></i> Crear Visita</a
+                      ><i class="mdi mdi-plus-circle me-2"></i> Registrar Visitante</a
                     >
                   </div>
                 </div>
@@ -31,9 +31,10 @@
                         <th>#</th>
                         <th>Propietario</th>
                         <th>Visitante</th>
-                        <th>Fecha llegada</th>
-                        <th>Fecha registro</th>
-                        <th>Fecha salida</th>
+                        <th>DNI</th>
+                        <th>Fecha y hora ingreso</th>
+                        <th>Fecha y hora salida</th>
+                        <th>Estado</th>
                         <th style="width: 110px">Acciones</th>
                       </tr>
                     </thead>
@@ -42,20 +43,12 @@
                         <td>1</td>
                         <td>Aeron Chairs</td>
                         <td>Aeron Chairs</td>
+                        <td>88888888</td>
                         <td>09/12/2018</td>
                         <td>03/02/22</td>
-                        <td>03/02/22</td>
-
+                        <td><span class="badge bg-success p-1">Ingresó</span></td>
                         <td class="table-action">
-                          <a style="cursor: pointer" class="action-icon">
-                            <i class="mdi mdi-eye"></i
-                          ></a>
-                          <a style="cursor: pointer" class="action-icon">
-                            <i class="mdi mdi-square-edit-outline"></i
-                          ></a>
-                          <a style="cursor: pointer" class="action-icon">
-                            <i class="mdi mdi-delete"></i
-                          ></a>
+                          <button type="button" class="btn btn-primary">Actualizar</button>
                         </td>
                       </tr>
                     </tbody>

@@ -22,16 +22,13 @@ export class CreateUserComponent implements OnInit {
     {
       id: 'owner',
       desc: 'Propietario'
-    },
-    {
-      id: 'user',
-      desc: 'Visitante'
     }
   ];
 
   role: string = "";
 
   newuser: NewUser = {
+    id: 0,
     name: '',
     username: '',
     email: '',
