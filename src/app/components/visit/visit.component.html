@@ -25,6 +25,7 @@
                   <table
                     class="table table-centered w-100 dt-responsive nowrap"
                     id="products-datatable"
+                    style="text-align: center;"
                   >
                     <thead class="table-light">
                       <tr>                        
@@ -45,9 +46,13 @@
                         <td>{{ item.name }}</td>
                         <td>{{ item.dni }}</td>
                         <td>{{ item.entryDate }}</td>
-                        <td>{{ item.exitDate }}</td>
+                        <td *ngIf="item.exitDate == null"> - </td>
+                        <td *ngIf="item.exitDate != null">{{ item.exitDate }}</td>
                         <td>{{ getEstado(item.status == null?0:item.status) }}</td>
-                        <td class="table-action">
+                        <td class="table-action" *ngIf="item.status == 1">
+                          <button type="button" disabled class="btn btn-primary" (click)="changeStatus(item)">Actualizar</button>                          
+                        </td>
+                        <td class="table-action" *ngIf="item.status == 0">
                           <button type="button" class="btn btn-primary" (click)="changeStatus(item)">Actualizar</button>
                         </td>
                       </tr>
