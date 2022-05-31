@@ -131,8 +131,8 @@
                 [(ngModel)]="department.user!.id"
               >
                 <option value="" disabled selected>[Seleccione propietario]</option>
-                <option value="{{ item }}" *ngFor="let item of listUsers">
-                  {{ item }}
+                <option value="{{ item.id }}" *ngFor="let item of listUsers">
+                  {{ item.name }}
                 </option>
               </select>
             </div>
