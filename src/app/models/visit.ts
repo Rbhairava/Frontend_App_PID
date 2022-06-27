@@ -1,12 +1,13 @@
-import { User } from "./user";
+import { Department } from "./department";
+import { Visitor } from "./visitor";
 
 export class Visit {
     id: number;
-    name: string;
-    dni: string;
-    phone: string;
+    comments: string;
     entryDate: Date;
+    estimatedDate: Date;
     exitDate: Date;
     status: number;
-    user: User;    
+    visitor: Visitor;
+    department: Department;
 }

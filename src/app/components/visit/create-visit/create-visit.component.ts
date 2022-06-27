@@ -1,8 +1,10 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NewUser } from 'src/app/models/new-user';
+import { Department } from 'src/app/models/department';
 import { Visit } from 'src/app/models/visit';
-import { AuthService } from 'src/app/services/auth.service';
+import { Visitor } from 'src/app/models/visitor';
+import { DepartamentService } from 'src/app/services/department.service';
 import { VisitService } from 'src/app/services/visit.service';
 
 declare var iziToast;
@@ -15,99 +17,108 @@ declare var iziToast;
 })
 export class CreateVisitComponent implements OnInit {
 
-  users: NewUser[] = [];
+  dateTime: any
 
-  visit: any = {
+  listDepartments: Department[] = [];
+
+  visitors: Visitor[] = [];
+  visitor: any = {
     id: 0,
-    name:'',
+    name: '',
+    lastname: '',
     dni: '',
     phone: '',
-    exitDate: '',
-    status: 0,
     user: {
-      id: 0
+      id: ''
     }
-  };
+  }
+
+  visits: Visit[] = [];
+  visit: any = {
+    id: 0,
+    comments: '',
+    entryDate: '',
+    estimatedDate: '',
+    exitDate: '',
+    status: 0,    
+    department: {
+      id: ''
+    },
+    visitor: {
+      id: ''      
+    }    
+  }
+
+  filtro: string ="";
+  visitorId : string = "";
+  
 
   constructor(
     private _router: Router,
-    private _authService: AuthService,
-    private _visitService: VisitService
+    private _visitService: VisitService,
+    private _departmentService: DepartamentService,
+    private _datePipe: DatePipe
   ) {
-    this.getUserByRole();
-  }
-
-  ngOnInit(): void {
-  }
-
-  getUserByRole() : void {
-    this._authService.listUsersOwner().subscribe({
+    this._visitService.listVisitor().subscribe({
       next: res=> {
-        this.users = res;       
-        console.log(this.users);        
+        this.visitors = res;
       },
       error: err=> {
         console.log(err);        
       }
     });
+    this._departmentService.listDepartment().subscribe(res=> this.listDepartments = res);
+  }
+
+  ngOnInit(): void {
+    setInterval(() => {
+      this.dateTime = this._datePipe.transform(new Date(), 'dd-MM-yyyy HH:mm:ss'); //'yyyy-MM-dd HH:mm:ss'
+    }, 1000);          
+  }
+
+  consulta() {
+    this._visitService.consulta(this.filtro).subscribe(
+      res=> {
+        this.visitor = res[0];
+        console.log(this.visitor);   
+      }
+    );
   }
 
   register(registerVisit:any) {
-    if (registerVisit.valid) {  
+    if (registerVisit.valid) {
+      this.visit.entryDate = this._datePipe.transform(new Date(), 'yyyy-MM-dd HH:mm:ss');
+      this.visit.visitor.id = this.visitor.id;
       this._visitService.addVisit(this.visit).subscribe({
-        next: res=> {
+        next: res => {
           iziToast.show({
             title: 'Registrado',
             position: 'topRight',
             color: '#A4E2B2',
-            timeout: 3000,
             message: `${res.mensaje}`
           });          
-          this._router.navigate(['/dashboard/visit']);
+          // this._router.navigate(['/dashboard/visit']);
           console.log(res);              
         },
-        error: err=> {
+        error: err => {
           iziToast.show({
             title: 'Error',
             position: 'topRight',
             color: 'red',
-            timeout: 3000,
             message: `${err.error.mensaje}`
           });   
           console.log(err);
-                 
-        }
+        }       
+      });
+    } else {
+      iziToast.show({
+        title: 'Error',
+        position: 'topRight',
+        color: 'red',
+        timeout: 3000,
+        message: 'Complete todos los datos del formulario.'
       });
     }
   }
-
-  // register(registerVisit:any) {
-  //   if (registerVisit.valid) {
-  //     this._visitService.addVisit(this.visit).subscribe(
-  //       res=> {
-  //         console.log(res);          
-  //         iziToast.show({
-  //           title: 'Registrado',
-  //           position: 'topRight',
-  //           color: '#A4E2B2',
-  //           timeout: 3000,
-  //           message: 'Se registro el propietario correctamente.'
-  //         });
-  //         this._router.navigate(['/dashboard/visit']);     
-  //       },
-  //       err=> {
-  //         console.log(err);          
-  //       }
-  //     );
-  //   } else {
-  //     iziToast.show({
-  //       title: 'Error',
-  //       position: 'topRight',
-  //       color: 'red',
-  //       timeout: 3000,
-  //       message: 'Complete todos los datos del formulario.'
-  //     });
-  //   }
-  // }
 
 }

@@ -10,7 +10,7 @@ export class Department {
     numberRooms: number;
     status: number;
     squareMeters: number;
-    joinDate: Date;
+    joinDate: string;
     tower: Tower;
     departmentTypes: DepartmentTypes;
     user: User;

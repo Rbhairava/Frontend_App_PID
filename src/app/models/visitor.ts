@@ -1,4 +1,10 @@
+import { User } from "./user";
+
 export class Visitor {
-    cod_visitante: number;
-    nom_visitante: string;
+    id: number;
+    name: string;
+    lastname: string;
+    dni: string;
+    phone: string;
+    user: User;    
 }

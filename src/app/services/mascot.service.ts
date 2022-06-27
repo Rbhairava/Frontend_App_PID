@@ -22,4 +22,16 @@ export class MascotService {
   addMascot(reg:Mascot): Observable<any> {
     return this._httpClient.post<any>(this.baseURL + 'url/mascota/create', reg);
   }
+
+  getMascot(id): Observable<Mascot>{
+    return this._httpClient.get<Mascot>(this.baseURL + 'url/mascota/detail' + `/${id}`)
+  }
+  
+  updateMascot(updateMascot: Mascot): Observable<any> {
+    return this._httpClient.put<any>(this.baseURL + 'url/mascota/update'+ `/${updateMascot.id}`, updateMascot);
+  }
+
+  deleteMascot(deleteMascot:Mascot): Observable<any> {
+    return this._httpClient.put<any>(this.baseURL + 'url/mascota/delete' + `/${deleteMascot.id}`,deleteMascot);
+  }
 }

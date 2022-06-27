@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DepartmentTypes } from 'src/app/models/department-types';
+import { NewUser } from 'src/app/models/new-user';
 import { Tower } from 'src/app/models/tower';
-import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
 import { DepartamentService } from 'src/app/services/department.service';
 import { TowerService } from 'src/app/services/tower.service';
@@ -19,7 +19,7 @@ export class CreateDepartmentComponent implements OnInit {
 
   listTowers: Tower[] = [];
   listDepartmentTypes: DepartmentTypes[] = [];
-  listUsers: User[] = [];
+  listUsers: NewUser[] = [];
 
   department: any = {
     id: 0,
@@ -42,11 +42,11 @@ export class CreateDepartmentComponent implements OnInit {
   constructor(
     private _router: Router,
     private _departmentService: DepartamentService,
-    private _authSercive: AuthService,
+    private _authService: AuthService,
     private _towerService: TowerService,
   ) { 
     this._towerService.listTowers().subscribe(res=> this.listTowers = res);
-    this._authSercive.listUsers().subscribe(res=> this.listUsers = res);
+    this._authService.listUsersOwner().subscribe(res=> this.listUsers = res);
     this._departmentService.listDepartmentTypes().subscribe(res=> this.listDepartmentTypes = res);
   }
 

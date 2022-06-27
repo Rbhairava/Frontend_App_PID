@@ -35,23 +35,25 @@
                         <th>Raza</th>
                         <th>Propietario</th>
                         <th>Departamento</th>
+                        <th>Fecha de Registro</th>
                         <th style="width: 110px">Acciones</th>
                       </tr>
                     </thead>
                     <tbody *ngFor="let item of pets; let indice = index">
-                      <tr>
+                      <tr *ngIf="item.status != 1">
                         <td>{{ indice + 1 }}</td>
                         <td>{{ item.name }}</td>
                         <td>{{ item.sex }}</td>
                         <td>{{ item.race }}</td>
                         <td>{{ item.user?.name }}</td>
                         <td>{{ item.department?.name }}</td>
+                        <td>{{ item.joinDate }}</td>
 
                         <td class="table-action">
-                          <a style="cursor: pointer" class="action-icon">
+                          <a style="cursor: pointer" [routerLink]="['/dashboard/mascot/update/', item.id]" class="action-icon">
                             <i class="mdi mdi-square-edit-outline"></i
                           ></a>
-                          <a style="cursor: pointer" class="action-icon">
+                          <a style="cursor: pointer" (click)="deleteMascot(item)" class="action-icon">
                             <i class="mdi mdi-delete"></i
                           ></a>
                         </td>

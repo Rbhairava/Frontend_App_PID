@@ -41,6 +41,6 @@ export class AuthService {
   }
 
   public deleteUser(deleteUser:User): Observable<any> {
-    return this.httpClient.put(this.baseURL + 'auth/deleteUser' + `/${deleteUser.id}`,deleteUser);
+    return this.httpClient.put<any>(this.baseURL + 'auth/deleteUser' + `/${deleteUser.id}`,deleteUser);
   }
 }

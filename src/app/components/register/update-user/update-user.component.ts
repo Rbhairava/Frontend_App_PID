@@ -72,7 +72,7 @@ export class UpdateUserComponent implements OnInit {
       this._authService.updateUser(this.newuser).subscribe({
         next: res=> {
           iziToast.show({
-            title: 'Registrado',
+            title: 'Actualizado',
             position: 'topRight',
             color: '#A4E2B2',
             timeout: 3000,

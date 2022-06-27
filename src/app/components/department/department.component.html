@@ -38,13 +38,13 @@
                         <th>Edificio</th>
                         <th>Tipo</th>
                         <th>Propietario</th>
-                        <th>Estado</th>
+                        <!-- <th>Estado</th> -->
                         <th>Fecha de Registro</th>
                         <th style="width: 110px">Acciones</th>
                       </tr>
                     </thead>
                     <tbody *ngFor="let item of listDepartments; let indice = index">
-                      <tr>
+                      <tr *ngIf="item.status != 1">
                         <td>{{ indice + 1 }}</td>
                         <td>{{ item.name }}</td>
                         <td>{{ item.number }}</td>
@@ -54,16 +54,13 @@
                         <td>{{ item.tower.name }}</td>
                         <td>{{ item.departmentTypes.name }}</td>
                         <td>{{ item.user.name }}</td>
-                        <td>{{ item.status }}</td>
+                        <!-- <td>{{ item.status }}</td> -->
                         <td>{{ item.joinDate }}</td>
                         <td class="table-action">
-                          <a style="cursor: pointer" class="action-icon">
-                            <i class="mdi mdi-eye"></i
-                          ></a>
-                          <a style="cursor: pointer" class="action-icon">
+                          <a style="cursor: pointer" [routerLink]="['/dashboard/department/update/', item.id]"  class="action-icon">
                             <i class="mdi mdi-square-edit-outline"></i
                           ></a>
-                          <a style="cursor: pointer" class="action-icon">
+                          <a style="cursor: pointer" class="action-icon" (click)="deleteDepartment(item)">
                             <i class="mdi mdi-delete"></i
                           ></a>
                         </td>

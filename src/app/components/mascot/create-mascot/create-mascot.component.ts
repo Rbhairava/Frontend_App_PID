@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Department } from 'src/app/models/department';
-import { Mascot } from 'src/app/models/mascot';
-import { User } from 'src/app/models/user';
+import { NewUser } from 'src/app/models/new-user';
 import { AuthService } from 'src/app/services/auth.service';
 import { DepartamentService } from 'src/app/services/department.service';
 import { MascotService } from 'src/app/services/mascot.service';
@@ -20,7 +19,7 @@ export class CreateMascotComponent implements OnInit {
 
   // form!: FormGroup;
 
-  listUsers: User[] = [];
+  listUsers: NewUser[] = [];
   listDepartments: Department[] = [];
 
   public mascot: any = {
@@ -43,7 +42,7 @@ export class CreateMascotComponent implements OnInit {
     private _router: Router
     // private _formBuilder: FormBuilder,
   ) {
-    this._authSercive.listUsers().subscribe(res=> this.listUsers = res);
+    this._authSercive.listUsersOwner().subscribe(res=> this.listUsers = res);
     this._departmentService.listDepartment().subscribe(res=> this.listDepartments = res);
   }
 

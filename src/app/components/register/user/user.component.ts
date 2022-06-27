@@ -42,10 +42,10 @@ export class UserComponent implements OnInit {
     return salida == null? "": salida;
   }
 
-  busca(item:User) {
-    this.user = item
-    console.log(this.user);
-  }
+  // busca(item:User) {
+  //   this.user = item
+  //   console.log(this.user);
+  // }
 
   deleteUser(item:User) {
     this.user = item;

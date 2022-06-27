@@ -6,6 +6,8 @@ export class Mascot {
     name: string;
     sex: string;
     race: string;
+    status: number;
+    joinDate: Date;
     user: User;
     department: Department;
 }

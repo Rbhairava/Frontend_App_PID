@@ -13,16 +13,21 @@ import { interceptorProvider } from './services/interceptor.service';
 import { OwnerComponent } from './components/owner/owner.component';
 import { DepartmentComponent } from './components/department/department.component';
 import { MascotComponent } from './components/mascot/mascot.component';
-import { VisitComponent } from './components/visit/visit.component';
 import { TopbarComponent } from './components/topbar/topbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { CreateOwnerComponent } from './components/owner/create-owner/create-owner.component';
 import { CreateDepartmentComponent } from './components/department/create-department/create-department.component';
-import { CreateVisitComponent } from './components/visit/create-visit/create-visit.component';
 import { CreateMascotComponent } from './components/mascot/create-mascot/create-mascot.component';
 import { CreateUserComponent } from './components/register/create-user/create-user.component';
 import { UserComponent } from './components/register/user/user.component';
 import { UpdateUserComponent } from './components/register/update-user/update-user.component';
+import { VisitorComponent } from './components/visit/visitor.component';
+import { CreateVisitorComponent } from './components/visit/create-visitor/create-visitor.component';
+import { VisitComponent } from './components/visit/visit/visit.component';
+import { CreateVisitComponent } from './components/visit/create-visit/create-visit.component';
+import { DatePipe } from '@angular/common';
+import { UpdateDepartmentComponent } from './components/department/update-department/update-department.component';
+import { UpdateMascotComponent } from './components/mascot/update-mascot/update-mascot.component';
 
 @NgModule({
   declarations: [
@@ -33,16 +38,20 @@ import { UpdateUserComponent } from './components/register/update-user/update-us
     OwnerComponent,
     DepartmentComponent,
     MascotComponent,
-    VisitComponent,
+    VisitorComponent,
     TopbarComponent,
     FooterComponent,
     CreateOwnerComponent,
     CreateDepartmentComponent,
-    CreateVisitComponent,
+    CreateVisitorComponent,
     CreateMascotComponent,
     CreateUserComponent,
     UserComponent,
-    UpdateUserComponent
+    UpdateUserComponent,
+    VisitComponent,
+    CreateVisitComponent,
+    UpdateDepartmentComponent,
+    UpdateMascotComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +61,7 @@ import { UpdateUserComponent } from './components/register/update-user/update-us
     ReactiveFormsModule,
     routing
   ],
-  providers: [interceptorProvider],
+  providers: [interceptorProvider, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

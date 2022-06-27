@@ -1,0 +1,195 @@
+<app-sidebar></app-sidebar>
+
+<div class="content-page">
+  <div class="content">
+    <app-topbar></app-topbar>
+    <!-- Start Content-->
+    <div class="container-fluid">
+      <!-- start page title -->
+      <div class="row">
+        <div class="col-12">
+          <div class="page-title-box">
+            <div class="card">
+              <div class="card-body">
+                <div class="row mb-2">
+                  <div class="col-sm-4">
+                    <a
+                      style="cursor: pointer"
+                      routerLink="/dashboard/visit/create"
+                      class="btn btn-danger mb-2"
+                      ><i class="mdi mdi-plus-circle me-2"></i> Registrar
+                      Visita</a
+                    >
+                  </div>
+                </div>
+
+                <div class="table-responsive">
+                  <table
+                    class="table table-centered w-100 dt-responsive nowrap"
+                    id="products-datatable"
+                    style="text-align: center"
+                  >
+                    <thead class="table-light">
+                      <tr>
+                        <th>#</th>
+                        <th>Visitante</th>
+                        <th>DNI</th>
+                        <th>Teléfono</th>
+                        <th>Propietario</th>
+                        <th>Fecha y hora ingreso</th>
+                        <th>Fecha y hora salida</th>
+                        <th>Estado</th>
+                        <th style="width: 110px">Acciones</th>
+                      </tr>
+                    </thead>
+                    <tbody *ngFor="let item of visits; let indice = index">
+                      <tr>
+                        <td>{{ indice + 1 }}</td>
+                        <td>{{ item.visitor.name }} {{ item.visitor.lastname }}</td>
+                        <td>{{ item.visitor.dni }}</td>
+                        <td>{{ item.visitor.phone }}</td>
+                        <td>{{ item.department.user.name }}</td>
+                        <td>{{ item.entryDate }}</td>
+                        <td *ngIf="item.exitDate == null"> - </td>
+                        <td *ngIf="item.exitDate != null">{{ item.exitDate }}</td>
+                        <td>{{ getEstado(item.status == null ? 0 : item.status) }}</td>
+                        <td class="table-action" *ngIf="item.status == 1">
+                          <button
+                            type="button"
+                            disabled
+                            class="btn btn-primary"
+                          >
+                            Actualizar
+                          </button>
+                        </td>
+                        <td class="table-action" *ngIf="item.status == 0">
+                          <button
+                            type="button"
+                            class="btn btn-primary"
+                            data-bs-toggle="modal"
+                            data-bs-target="#multiple-one"
+                            (click)="searchVisit(item)"
+                          >
+                            Actualizar
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <!-- end card-body-->
+            </div>
+            <!-- end card-->
+            <!-- end row -->
+          </div>
+        </div>
+      </div>
+      <!-- end page title -->
+    </div>
+    <!-- container -->
+
+    <form (ngSubmit)="submitFormulario()">
+      <!-- Multiple modal -->
+      <div
+        id="multiple-one"
+        class="modal fade"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="multiple-oneModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="multiple-oneModalLabel">
+                Comentario del Visitante
+              </h4>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-hidden="true"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <h5 class="mt-0">Comentario</h5>
+              <textarea
+                name="comments"
+                id="comments"
+                cols="59"
+                rows="5"
+                [(ngModel)]="visit.comments"
+              ></textarea>
+              <!-- <span class="text-danger"
+                *ngIf="inputNoValido('comment')">
+                {{ commentErrorMsg }}
+              </span> -->
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-primary"
+                data-bs-target="#multiple-two"
+                data-bs-toggle="modal"
+                data-bs-dismiss="modal"
+              >
+                Siguiente
+              </button>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>  
+      <!-- /.modal -->
+
+      <!-- Modal -->
+      <div
+        id="multiple-two"
+        class="modal fade"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="multiple-twoModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="multiple-twoModalLabel">
+                Salida del visitante
+              </h4>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-hidden="true"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <p>
+                Este es el último paso para la salida del visitante. Presione en el botón "Salida del visitante" 
+                para actualizar el estado y fecha de salida.
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-primary"
+                data-bs-dismiss="modal"
+                (click)="changeStatus()"
+                >
+                Salida del visitante
+              </button>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+      <!-- /.modal -->
+    </form>
+  </div>
+  <!-- content -->
+  <app-footer></app-footer>
+</div>

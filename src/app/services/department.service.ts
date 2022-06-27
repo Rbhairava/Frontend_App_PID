@@ -28,4 +28,16 @@ export class DepartamentService {
     return this._httpClient.post<any>(this.baseURL + 'url/departamento/create', reg);
   }
 
+  getDepartment(id): Observable<Department>{
+    return this._httpClient.get<Department>(this.baseURL + 'url/departamento/detail' + `/${id}`)
+  }
+  
+  updateDepartment(updateDepartment: Department): Observable<any> {
+    return this._httpClient.put<any>(this.baseURL + 'url/departamento/update'+ `/${updateDepartment.id}`, updateDepartment);
+  }
+
+  deleteDepartment(deleteDepartment:Department): Observable<any> {
+    return this._httpClient.put<any>(this.baseURL + 'url/departamento/delete' + `/${deleteDepartment.id}`,deleteDepartment);
+  }
+
 }

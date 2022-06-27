@@ -48,27 +48,31 @@
             </div>
             <div class="mb-3">
               <label class="form-label" for="validationCustom02">Sexo</label>
-              <input
-                type="text"
-                class="form-control"
+              <select
                 id="sex"
-                placeholder="Ingrese su sexo"
                 name="sex"
+                class="form-control"
                 [(ngModel)]="mascot.sex"
-                required
-              />
+              >
+                <option value="" disabled selected>[Seleccione Sexo]</option>
+                <option value="macho" selected>Macho</option>
+                <option value="hembra" selected>Hembra</option>
+              </select>
             </div>
             <div class="mb-3">
               <label class="form-label" for="validationCustom02">Raza</label>
-              <input
-                type="text"
-                class="form-control"
+              <select
                 id="race"
-                placeholder="Ingrese su raza"
                 name="race"
+                class="form-control"
                 [(ngModel)]="mascot.race"
-                required
-              />
+              >
+                <option value="" disabled selected>[Seleccione Raza]</option>
+                <option value="pekines" selected>Pekinés</option>
+                <option value="doberman" selected>Doberman</option>
+                <option value="pitbull" selected>Pitbull</option>
+                <option value="rottweiler" selected>Rottweiler</option>
+              </select>          
             </div>
 
             <div class="mb-3">
