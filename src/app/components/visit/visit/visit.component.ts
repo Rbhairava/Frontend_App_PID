@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Visit } from 'src/app/models/visit';
@@ -30,6 +31,8 @@ export class VisitComponent implements OnInit {
     }
   };
 
+  dateTime: any
+
   commentPattern: string = '([a-zA-ZñÑáéíóúÁÉÍÓÚüÜ0-9 ]+)';
 
   inputForm: FormGroup = this._formBuilder.group({
@@ -38,7 +41,8 @@ export class VisitComponent implements OnInit {
 
   constructor(
     private _formBuilder: FormBuilder,
-    private _visitService: VisitService
+    private _visitService: VisitService,
+    private _datePipe: DatePipe
   ) {
     this._visitService.listVisit().subscribe({
       next: res=> {
@@ -52,6 +56,9 @@ export class VisitComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    setInterval(() => {
+      this.dateTime = this._datePipe.transform(new Date(), 'dd-MM-yyyy HH:mm:ss'); //'yyyy-MM-dd HH:mm:ss'
+    }, 1000);
   }
 
   get commentErrorMsg(): string {
@@ -94,17 +101,11 @@ export class VisitComponent implements OnInit {
   }
 
   changeStatus() {
-    // item:Visit
-    // this.visit = item;
-    // this.visit.status = item.status==1?0:1;
-    // this.visit.comments = item.comments;
+
+    this.visit.exitDate = this._datePipe.transform(new Date(), 'yyyy-MM-dd HH:mm:ss');
 
     this._visitService.changeStatus(this.visit).subscribe({
-      next: res=> {
-        this.visit.comments = res.comments;
-        console.log(this.visit.comments);
-        
-        this.visit.status = res.status==1?0:1;
+      next: res=> {        
         iziToast.show({
           title: 'Estado',
           position: 'topRight',

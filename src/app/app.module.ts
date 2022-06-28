@@ -28,6 +28,11 @@ import { CreateVisitComponent } from './components/visit/create-visit/create-vis
 import { DatePipe } from '@angular/common';
 import { UpdateDepartmentComponent } from './components/department/update-department/update-department.component';
 import { UpdateMascotComponent } from './components/mascot/update-mascot/update-mascot.component';
+import { PaymentReceiptsComponent } from './components/payment/payment-receipts/payment-receipts.component';
+import { CreatePaymentReceiptsComponent } from './components/payment/create-payment-receipts/create-payment-receipts.component';
+import { PaymentServicesComponent } from './components/payment/payment-services/payment-services.component';
+import { CreateIncidenceComponent } from './components/incidence/create-incidence/create-incidence.component';
+import { IncidenceComponent } from './components/incidence/incidence/incidence.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +56,12 @@ import { UpdateMascotComponent } from './components/mascot/update-mascot/update-
     VisitComponent,
     CreateVisitComponent,
     UpdateDepartmentComponent,
-    UpdateMascotComponent
+    UpdateMascotComponent,
+    PaymentReceiptsComponent,
+    CreatePaymentReceiptsComponent,
+    PaymentServicesComponent,
+    CreateIncidenceComponent,
+    IncidenceComponent
   ],
   imports: [
     BrowserModule,

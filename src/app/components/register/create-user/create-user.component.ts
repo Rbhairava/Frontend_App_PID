@@ -22,6 +22,10 @@ export class CreateUserComponent implements OnInit {
     {
       id: 'owner',
       desc: 'Propietario'
+    },
+    {
+      id: 'counter',
+      desc: 'Counter'
     }
   ];
 

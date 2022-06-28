@@ -88,6 +88,7 @@ export class CreateVisitComponent implements OnInit {
   register(registerVisit:any) {
     if (registerVisit.valid) {
       this.visit.entryDate = this._datePipe.transform(new Date(), 'yyyy-MM-dd HH:mm:ss');
+      this.visit.estimatedDate = this._datePipe.transform(this.visit.estimatedDate, 'yyyy-MM-dd HH:mm:ss');
       this.visit.visitor.id = this.visitor.id;
       this._visitService.addVisit(this.visit).subscribe({
         next: res => {

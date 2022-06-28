@@ -16,6 +16,11 @@ import { VisitComponent } from "./components/visit/visit/visit.component";
 import { CreateVisitComponent } from "./components/visit/create-visit/create-visit.component";
 import { UpdateDepartmentComponent } from "./components/department/update-department/update-department.component";
 import { UpdateMascotComponent } from "./components/mascot/update-mascot/update-mascot.component";
+import { PaymentServicesComponent } from "./components/payment/payment-services/payment-services.component";
+import { PaymentReceiptsComponent } from "./components/payment/payment-receipts/payment-receipts.component";
+import { CreatePaymentReceiptsComponent } from "./components/payment/create-payment-receipts/create-payment-receipts.component";
+import { IncidenceComponent } from "./components/incidence/incidence/incidence.component";
+import { CreateIncidenceComponent } from "./components/incidence/create-incidence/create-incidence.component";
 
 const appRoute: Routes = [
     {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
@@ -34,6 +39,11 @@ const appRoute: Routes = [
         {path: 'visitor/create', component: CreateVisitorComponent, canActivate: [AdminGuard]},
         {path: 'visit', component: VisitComponent, canActivate: [AdminGuard]},
         {path: 'visit/create', component: CreateVisitComponent, canActivate: [AdminGuard]},
+        {path: 'boleta', component: PaymentReceiptsComponent, canActivate: [AdminGuard]},
+        {path: 'boleta/create', component: CreatePaymentReceiptsComponent, canActivate: [AdminGuard]},
+        {path: 'payment', component: PaymentServicesComponent, canActivate: [AdminGuard]},
+        {path: 'incidence', component: IncidenceComponent, canActivate: [AdminGuard]},
+        {path: 'incidence/create', component: CreateIncidenceComponent, canActivate: [AdminGuard]},
     ]},
 
     {path: 'login', component: LoginComponent}
