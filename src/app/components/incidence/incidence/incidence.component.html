@@ -60,7 +60,7 @@
                     </div>
                     <div class="col-sm-3" style="margin-top: 1.8rem!important;">
                       <a
-                      style="cursor: pointer"
+                      style="cursor: pointer; width: 100%;"
                       class="btn btn-primary"
                       (click)="consulta()"
                       >Filtrar
@@ -105,7 +105,7 @@
                         <td>{{ item.cause }}</td>
                         <td>{{ item.comment }}</td>
                         <td>
-                          {{ getEstado(item.status == null ? 0 : item.status) }}
+                          {{ getEstado(item.status == null ? 1 : item.status) }}
                         </td>
                         <td>{{ item.incidenceDate }}</td>
                         <td>{{ item.user.name }}</td>
@@ -176,8 +176,8 @@
                   <h5 class="card-title">Estado de Incidencia</h5>
                   <select class="form-control" name="status" [(ngModel)]="incidence.status">
                     <option disabled selected value="">[Seleccionar Estado]</option>
-                    <option disabled selected value="0">No Atendido</option>
-                    <option value="1">Atendido</option>
+                    <option disabled selected value="1">No Atendido</option>
+                    <option value="2">Atendido</option>
                   </select>
                 </div>
               </div>

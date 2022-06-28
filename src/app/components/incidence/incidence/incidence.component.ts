@@ -49,7 +49,8 @@ export class IncidenceComponent implements OnInit {
   }
 
   consulta() {
-    this._incidenceService.getListIncidenceParams(this.incidence.department.id, this.incidence.status, this.incidence.cause).subscribe({
+    this._incidenceService.getListIncidenceParams(this.incidence.department.id, this.incidence.status, this.incidence.cause)
+    .subscribe({
       next: res=> {
         this.incidences = res.lista;
         console.log(this.incidences);
@@ -83,7 +84,6 @@ export class IncidenceComponent implements OnInit {
           timeout: 3000,
           message: 'Incidencia Actualizado con éxito'
         });          
-        this._router.navigate(['/dashboard/incidence']);
         console.log(res);
       },
       error: err=> {

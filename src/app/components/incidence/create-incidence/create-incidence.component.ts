@@ -55,7 +55,7 @@ export class CreateIncidenceComponent implements OnInit {
             timeout: 3000,
             message: `${res.mensaje}`
           });          
-          // this._router.navigate(['/dashboard/incidence']);
+          this._router.navigate(['/dashboard/incidence']);
           console.log(res);  
         },
         error: err=> {
