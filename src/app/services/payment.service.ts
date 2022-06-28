@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -17,5 +17,15 @@ export class PaymentService {
 
   createReceipt(reg:PaymentReceipts): Observable<any> {
     return this._httpClient.post<any>(this.baseURL + 'url/paymentReceipt/create', reg);
+  }
+
+  getListpaymentReceiptParams(dni:string,name:string,typeService:number,status:number): Observable<any> {
+    const params = new HttpParams()
+      .set("dni", dni)
+      .set("name", name)
+      .set("typeService", typeService)
+      .set("status", status);
+
+    return this._httpClient.get(this.baseURL+"url/paymentReceipt/paymentReceiptByParameters",{params});
   }
 }

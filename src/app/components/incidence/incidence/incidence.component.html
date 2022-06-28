@@ -11,6 +11,63 @@
           <div class="page-title-box">
             <div class="card">
               <div class="card-body">
+
+                <div class="row mb-2 col-sm-12">
+                    <div class="mb-3 col-sm-3">
+                      <label class="form-label" for="validationCustom02"
+                        >Departamento</label
+                      >
+                      <select
+                        id="department"
+                        name="department"
+                        class="form-control"
+                        required
+                        [(ngModel)]="incidence.department!.id"
+                      >
+                        <option value="" disabled selected>
+                          [Seleccione el Departamento]
+                        </option>
+                        <option [value]="item.id" *ngFor="let item of listDepartments">
+                          {{ item.name }}
+                        </option>
+                      </select>
+                    </div>
+                    <div class="mb-3 col-sm-3">
+                      <label class="form-label" for="validationCustom02">Causa</label>
+                      <select
+                        id="cause"
+                        name="cause"
+                        class="form-control"
+                        [(ngModel)]="incidence.cause"
+                      >
+                        <option value="" disabled selected>[Selección de opciones]</option>
+                        <option value="ruidos molestos" selected>Ruidos molestos</option>
+                        <option value="filtraciones" selected>Filtraciones</option>
+                      </select>          
+                    </div>
+                    <div class="mb-3 col-sm-3">
+                      <label class="form-label" for="validationCustom02">Estado</label>
+                      <select
+                        id="state"
+                        name="status"
+                        class="form-control"
+                        [(ngModel)]="incidence.status"
+                      >
+                        <option value="" disabled selected>[Selección de estado]</option>
+                        <option value="1" selected>No atendido</option>
+                        <option value="2" selected>Atendido</option>
+                      </select>          
+                    </div>
+                    <div class="col-sm-3" style="margin-top: 1.8rem!important;">
+                      <a
+                      style="cursor: pointer"
+                      class="btn btn-primary"
+                      (click)="consulta()"
+                      >Filtrar
+                      </a>
+                    </div>
+                </div>
+
                 <div class="row mb-2">
                   <div class="col-sm-4">
                     <a
@@ -53,7 +110,7 @@
                         <td>{{ item.incidenceDate }}</td>
                         <td>{{ item.user.name }}</td>
                         <td>{{ item.registrationDate }}</td>
-                        <td class="table-action" *ngIf="item.status == 1">
+                        <td class="table-action" *ngIf="item.status == 2">
                           <button
                             type="button"
                             disabled
@@ -62,7 +119,7 @@
                             Gestionar
                           </button>
                         </td>
-                        <td class="table-action" *ngIf="item.status == 0">
+                        <td class="table-action" *ngIf="item.status == 1">
                           <button
                             type="button"
                             class="btn btn-primary"

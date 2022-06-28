@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -25,5 +25,14 @@ export class IncidenceService {
 
   getUpdateStateIncidence(order:Incidence): Observable<Incidence> {
     return this._httpClient.patch<Incidence>(this.baseURL+"url/incidence/updateStateIncidence",order);
+  }
+
+  getListIncidenceParams(depa:number,status:number,cause:string): Observable<any> {
+    const params = new HttpParams()
+      .set("depa", depa)
+      .set("cause", cause)
+      .set("status", status);
+
+    return this._httpClient.get(this.baseURL+"url/incidence/incidenceByParameters",{params});
   }
 }

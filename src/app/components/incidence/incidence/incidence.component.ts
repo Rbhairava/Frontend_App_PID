@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Department } from 'src/app/models/department';
 import { Incidence } from 'src/app/models/incidence';
+import { DepartamentService } from 'src/app/services/department.service';
 import { IncidenceService } from 'src/app/services/incidence.service';
 
 declare var iziToast;
@@ -14,9 +16,12 @@ declare var iziToast;
 export class IncidenceComponent implements OnInit {
 
   incidences: Incidence[] = [];
+  listDepartments: Department[] = [];
   
   incidence: any = {
     id: 0,
+    cause: '',
+    status: '',
     department: {
       id: '',
       name: ''
@@ -25,8 +30,10 @@ export class IncidenceComponent implements OnInit {
 
   constructor(
     private _router: Router,
-    private _incidenceService: IncidenceService
+    private _incidenceService: IncidenceService,
+    private _departmentService: DepartamentService,
   ) { 
+    this._departmentService.listDepartment().subscribe(res=> this.listDepartments = res);
     this._incidenceService.listIncidence().subscribe({
       next: res=> {
         this.incidences = res;       
@@ -41,6 +48,16 @@ export class IncidenceComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  consulta() {
+    this._incidenceService.getListIncidenceParams(this.incidence.department.id, this.incidence.status, this.incidence.cause).subscribe({
+      next: res=> {
+        this.incidences = res.lista;
+        console.log(this.incidences);
+        
+      }
+    });
+  }
+
   searchIncidence(item:Incidence) {
     this.incidence = item
     console.log(this.incidence);
@@ -48,7 +65,7 @@ export class IncidenceComponent implements OnInit {
 
   getEstado(status:number):string {
     let salida = "";
-    if (status == 1) {
+    if (status == 2) {
       salida = "Atendido";
     } else {
       salida = "No Atendido";
